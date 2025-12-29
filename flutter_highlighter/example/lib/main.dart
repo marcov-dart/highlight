@@ -9,7 +9,7 @@ void main() => runApp(const MyApp());
 const title = 'Flutter Highlight Gallery';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -54,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
               return exampleMap.keys.map((key) {
                 return CheckedPopupMenuItem(
                   value: key,
-                  child: Text(key),
                   checked: language == key,
+                  child: Text(key),
                 );
               }).toList();
             },
@@ -73,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
               return themeMap.keys.map((key) {
                 return CheckedPopupMenuItem(
                   value: key,
-                  child: Text(key),
                   checked: theme == key,
+                  child: Text(key),
                 );
               }).toList();
             },

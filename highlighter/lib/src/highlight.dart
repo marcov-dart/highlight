@@ -55,7 +55,7 @@ class Highlight {
         ret += substring(re, 0, match.start);
         re = substring(re, match.start + match[0]!.length);
         if (match[0]![0] == '\\' && match[1] != null) {
-          ret += '\\' + (int.parse(match[1]!) + offset).toString();
+          ret += '\\${int.parse(match[1]!) + offset}';
         } else {
           ret += match[0]!;
           if (match[0] == '(') {
@@ -76,7 +76,7 @@ class Highlight {
     if (mode.keywords != null) {
       var compiledKeywords = {}.cast<String, dynamic>();
 
-      void _flatten(String className, String? str) {
+      void flatten(String className, String? str) {
         if (_languageMode!.caseInsensitive == true) {
           str = str!.toLowerCase();
         }
@@ -95,9 +95,9 @@ class Highlight {
       }
 
       if (mode.keywords is String) {
-        _flatten('keyword', mode.keywords);
+        flatten('keyword', mode.keywords);
       } else if (mode.keywords is Map<String, String>) {
-        (mode.keywords as Map<String, String>).forEach(_flatten);
+        (mode.keywords as Map<String, String>).forEach(flatten);
       }
       mode.keywords = compiledKeywords;
     }
@@ -106,7 +106,7 @@ class Highlight {
 
     if (parent != null) {
       if (mode.beginKeywords != null) {
-        mode.begin = '\\b(' + mode.beginKeywords!.split(' ').join('|') + ')\\b';
+        mode.begin = '\\b(${mode.beginKeywords!.split(' ').join('|')})\\b';
       }
       mode.begin ??= r'\B|\b';
       mode.beginRe = _langRe(mode.begin!);
@@ -124,7 +124,7 @@ class Highlight {
     mode.relevance ??= 1;
     mode.contains ??= [];
 
-    Mode? _pointToRef(Mode? m) {
+    Mode? pointToRef(Mode? m) {
       if (m!.ref != null) {
         return _languageMode!.refs![m.ref!];
       }
@@ -132,13 +132,13 @@ class Highlight {
     }
 
     if (mode.contains != null) {
-      mode.contains = mode.contains!.map(_pointToRef).toList();
+      mode.contains = mode.contains!.map(pointToRef).toList();
     }
     if (mode.variants != null) {
-      mode.variants = mode.variants!.map(_pointToRef).toList();
+      mode.variants = mode.variants!.map(pointToRef).toList();
     }
     if (mode.starts != null) {
-      mode.starts = _pointToRef(mode.starts);
+      mode.starts = pointToRef(mode.starts);
     }
 
     var contains = [].cast<Mode>();
@@ -156,9 +156,7 @@ class Highlight {
     }
 
     var terminators = (mode.contains!.map((c) {
-      return c!.beginKeywords != null
-          ? '\\.?(?:' + c.begin! + ')\\.?'
-          : c.begin;
+      return c!.beginKeywords != null ? '\\.?(?:${c.begin!})\\.?' : c.begin;
     }).toList()
           ..addAll([mode.terminatorEnd, mode.illegal]))
         .where((x) => x != null && x.isNotEmpty)
@@ -275,7 +273,7 @@ class Highlight {
     // }
 
     // FIXME: Move inside highlight to use lang reference
-    dynamic _keywordMatch(Mode mode, RegExpMatch match) {
+    dynamic matchKeyword(Mode mode, RegExpMatch match) {
       final matchStr =
           langMode.caseInsensitive == true ? match[0]!.toLowerCase() : match[0];
       return mode.keywords[matchStr];
@@ -289,7 +287,7 @@ class Highlight {
     List<Node>? currentChildren = children;
     var stack = [].cast<List<Node>?>();
 
-    void _pop() {
+    void pop() {
       currentChildren = stack.isEmpty ? children : stack.removeLast();
     }
 
@@ -304,11 +302,11 @@ class Highlight {
     var modeBuffer = '';
     var relevance = 0;
 
-    bool _isIllegal(String lexeme, Mode? mode) {
+    bool isIllegal(String lexeme, Mode? mode) {
       return !ignoreIllegals && _testRe(mode!.illegalRe, lexeme);
     }
 
-    void _startNewMode(Mode mode) {
+    void startNewMode(Mode mode) {
       if (_classNameExists(mode.className)) {
         currentChildren!.add(Node(className: mode.className, children: []));
         stack.add(currentChildren);
@@ -317,7 +315,7 @@ class Highlight {
       top = Mode.inherit(mode)..parent = top;
     }
 
-    List<Node> _processKeywords() {
+    List<Node> processKeywords() {
       if (top!.keywords == null) return [Node(value: modeBuffer)];
 
       dynamic keywordMatch;
@@ -329,7 +327,7 @@ class Highlight {
 
       while (match != null) {
         _addText(substring(modeBuffer, lastIndex, match.start), result);
-        keywordMatch = _keywordMatch(top!, match);
+        keywordMatch = matchKeyword(top!, match);
         if (keywordMatch != null) {
           relevance += keywordMatch[1] as int;
           _addNodes(
@@ -347,7 +345,7 @@ class Highlight {
       return result;
     }
 
-    List<Node>? _processSubLanguage() {
+    List<Node>? processSubLanguage() {
       var explicit = top!.subLanguage!.length == 1;
       if (explicit && _languages[top!.subLanguage!.first] == null) {
         return [Node(value: modeBuffer)];
@@ -371,20 +369,18 @@ class Highlight {
       return _buildSpan(result.language, result.nodes, noPrefix: true);
     }
 
-    void _processBuffer() {
+    void processBuffer() {
       _addNodes(
-          top!.subLanguage != null
-              ? _processSubLanguage()!
-              : _processKeywords(),
+          top!.subLanguage != null ? processSubLanguage()! : processKeywords(),
           currentChildren);
       modeBuffer = '';
     }
 
-    int _processLexeme(String buffer, [String? lexeme]) {
+    int processLexeme(String buffer, [String? lexeme]) {
       modeBuffer += buffer;
 
       if (lexeme == null) {
-        _processBuffer();
+        processBuffer();
         return 0;
       }
 
@@ -397,12 +393,12 @@ class Highlight {
           if (newMode.excludeBegin == true) {
             modeBuffer += lexeme;
           }
-          _processBuffer();
+          processBuffer();
           if (newMode.returnBegin != true && newMode.excludeBegin != true) {
             modeBuffer = lexeme;
           }
         }
-        _startNewMode(newMode);
+        startNewMode(newMode);
         return newMode.returnBegin == true ? 0 : lexeme.length;
       }
 
@@ -415,14 +411,14 @@ class Highlight {
           if (!(origin.returnEnd == true || origin.excludeEnd == true)) {
             modeBuffer += lexeme;
           }
-          _processBuffer();
+          processBuffer();
           if (origin.excludeEnd == true) {
             modeBuffer = lexeme;
           }
         }
         do {
           if (_classNameExists(top!.className)) {
-            _pop();
+            pop();
           }
           if (top!.skip != true && top!.subLanguage == null) {
             relevance += top!.relevance!;
@@ -433,17 +429,14 @@ class Highlight {
           if (endMode.endSameAsBegin == true) {
             endMode.starts!.endRe = endMode.endRe;
           }
-          _startNewMode(endMode.starts!);
+          startNewMode(endMode.starts!);
         }
         return origin.returnEnd == true ? 0 : lexeme.length;
       }
 
-      if (_isIllegal(lexeme, top)) {
-        throw 'Illegal lexeme "' +
-            lexeme +
-            '" for mode "' +
-            (top!.className ?? '<unnamed>') +
-            '"';
+      if (isIllegal(lexeme, top)) {
+        throw 'Illegal lexeme "$lexeme" for'
+            ' mode "${top!.className ?? '<unnamed>'}"';
       }
 
       modeBuffer += lexeme;
@@ -467,13 +460,13 @@ class Highlight {
         // print(result);
         // print('');
 
-        count = _processLexeme(substring(source, index, match.start), match[0]);
+        count = processLexeme(substring(source, index, match.start), match[0]);
         index = count + match.start;
       }
-      _processLexeme(substring(source, index));
+      processLexeme(substring(source, index));
       for (current = top; current!.parent != null; current = current.parent) {
         if (_classNameExists(current.className)) {
-          _pop();
+          pop();
         }
       }
       // print(relevance);

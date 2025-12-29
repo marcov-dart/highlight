@@ -30,22 +30,21 @@ class HighlightView extends StatelessWidget {
 
   HighlightView(
     String input, {
-    Key? key,
+    super.key,
     this.backgroundColor,
     this.language,
     this.theme = const {},
     this.padding,
     this.textStyle,
     int tabSize = 8, // TODO: https://github.com/flutter/flutter/issues/50087
-  })  : source = input.replaceAll('\t', ' ' * tabSize),
-        super(key: key);
+  }) : source = input.replaceAll('\t', ' ' * tabSize);
 
   List<TextSpan> _convert(List<Node> nodes) {
     List<TextSpan> spans = [];
     var currentSpans = spans;
     List<List<TextSpan>> stack = [];
 
-    _traverse(Node node) {
+    void traverse(Node node) {
       if (node.value != null) {
         currentSpans.add(node.className == null
             ? TextSpan(text: node.value)
@@ -58,7 +57,7 @@ class HighlightView extends StatelessWidget {
         currentSpans = tmp;
 
         for (var n in node.children!) {
-          _traverse(n);
+          traverse(n);
           if (n == node.children!.last) {
             currentSpans = stack.isEmpty ? spans : stack.removeLast();
           }
@@ -67,7 +66,7 @@ class HighlightView extends StatelessWidget {
     }
 
     for (var node in nodes) {
-      _traverse(node);
+      traverse(node);
     }
 
     return spans;
@@ -84,12 +83,12 @@ class HighlightView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _textStyle = TextStyle(
+    var textStyle = TextStyle(
       fontFamily: _defaultFontFamily,
       color: theme[_rootKey]?.color ?? _defaultFontColor,
     );
-    if (textStyle != null) {
-      _textStyle = _textStyle.merge(textStyle);
+    if (this.textStyle != null) {
+      textStyle = textStyle.merge(this.textStyle);
     }
 
     return Container(
@@ -99,7 +98,7 @@ class HighlightView extends StatelessWidget {
       padding: padding,
       child: SelectableText.rich(
         TextSpan(
-          style: _textStyle,
+          style: textStyle,
           children:
               _convert(highlight.parse(source, language: language).nodes!),
         ),

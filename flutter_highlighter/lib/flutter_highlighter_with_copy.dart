@@ -9,14 +9,14 @@ class HighlightViewWithCopy extends StatefulWidget {
   final VoidCallback? onPressed;
 
   const HighlightViewWithCopy({
-    Key? key,
+    super.key,
     required this.highlightView,
     this.buttonIcon = const Icon(Icons.copy),
     this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
-  _HighlightViewWithCopyState createState() => _HighlightViewWithCopyState();
+  State<HighlightViewWithCopy> createState() => _HighlightViewWithCopyState();
 }
 
 class _HighlightViewWithCopyState extends State<HighlightViewWithCopy> {
