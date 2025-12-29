@@ -9,9 +9,9 @@ final bnf = Mode(refs: {}, contains: [
       begin: "::=",
       starts: Mode(end: "\$", contains: [
         Mode(begin: "<", end: ">"),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        APOS_STRING_MODE,
-        QUOTE_STRING_MODE
+        cLimeCommentMode,
+        cBlockCommentMode,
+        aposStringMode,
+        quoteStringMode
       ]))
 ]);

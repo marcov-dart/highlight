@@ -21,7 +21,7 @@ final clojure = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -66,7 +66,7 @@ final clojure = Mode(
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~0~contains~1~starts':
           Mode(endsWithParent: true, relevance: 0, contains: [
         Mode(ref: '~contains~0'),
@@ -92,7 +92,7 @@ final clojure = Mode(
       ]),
       '~contains~0': Mode(begin: "\\(", end: "\\)", contains: [
         Mode(className: "comment", begin: "comment", end: "", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

@@ -9,7 +9,7 @@ final parser3 = Mode(
     relevance: 0,
     contains: [
       Mode(className: "comment", begin: "^#", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -22,13 +22,13 @@ final parser3 = Mode(
           contains: [
             Mode(className: "comment", begin: "{", end: "}", contains: [
               Mode(self: true),
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                   relevance: 0)
             ]),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -45,5 +45,5 @@ final parser3 = Mode(
       Mode(className: "variable", begin: "\\\$\\{?[\\w\\-\\.\\:]+\\}?"),
       Mode(className: "keyword", begin: "\\^[\\w\\-\\.\\:]+"),
       Mode(className: "number", begin: "\\^#[0-9a-fA-F]+"),
-      C_NUMBER_MODE
+      cNumberMode
     ]);

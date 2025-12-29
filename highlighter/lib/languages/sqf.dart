@@ -13,7 +13,7 @@ final sqf = Mode(
           contains: [Mode(begin: "\"\"", relevance: 0)]),
     },
     aliases: ["sqf"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "case catch default do else exit exitWith for forEach from if private switch then throw to try waitUntil while with",
@@ -23,9 +23,9 @@ final sqf = Mode(
           "blufor civilian configNull controlNull displayNull east endl false grpNull independent lineBreak locationNull nil objNull opfor pi resistance scriptNull sideAmbientLife sideEmpty sideLogic sideUnknown taskNull teamMemberNull true west"
     },
     contains: [
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      NUMBER_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      numberMode,
       Mode(className: "variable", begin: "\\b_+[a-zA-Z_]\\w*"),
       Mode(className: "title", begin: "[a-zA-Z][a-zA-Z0-9]+_fnc_\\w*"),
       Mode(className: "string", variants: [
@@ -45,8 +45,8 @@ final sqf = Mode(
             begin: "<[^\\n>]*>",
             end: "\$",
             illegal: "\\n"),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE
+        cLimeCommentMode,
+        cBlockCommentMode
       ])
     ],
     illegal: "#|^\\\$ ");

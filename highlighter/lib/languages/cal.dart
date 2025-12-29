@@ -11,7 +11,7 @@ final cal = Mode(
           end: "[:;]",
           keywords: "procedure|10",
           contains: [
-            TITLE_MODE,
+            titleMode,
             Mode(
                 className: "params",
                 begin: "\\(",
@@ -19,13 +19,13 @@ final cal = Mode(
                 keywords:
                     "div mod in and or not xor asserterror begin case do downto else end exit for if of repeat then to until while with var",
                 contains: [Mode(ref: '~contains~0'), Mode(ref: '~contains~1')]),
-            C_LINE_COMMENT_MODE,
+            cLimeCommentMode,
             Mode(
                 className: "comment",
                 begin: "\\{",
                 end: "\\}",
                 contains: [
-                  PHRASAL_WORDS_MODE,
+                  phrasakWordsMode,
                   Mode(
                       className: "doctag",
                       begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -37,7 +37,7 @@ final cal = Mode(
                 begin: "\\(\\*",
                 end: "\\*\\)",
                 contains: [
-                  PHRASAL_WORDS_MODE,
+                  phrasakWordsMode,
                   Mode(
                       className: "doctag",
                       begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -52,7 +52,7 @@ final cal = Mode(
           end: "'",
           contains: [Mode(begin: "''")]),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "div mod in and or not xor asserterror begin case do downto else end exit for if of repeat then to until while with var",
@@ -67,12 +67,12 @@ final cal = Mode(
           begin: "\\b\\d+(\\.\\d+)?(DT|D|T)",
           relevance: 0),
       Mode(className: "string", begin: "\"", end: "\""),
-      NUMBER_MODE,
+      numberMode,
       Mode(
           className: "class",
           begin:
               "OBJECT (Table|Form|Report|Dataport|Codeunit|XMLport|MenuSuite|Page|Query) (\\d+) ([^\\r\\n]+)",
           returnBegin: true,
-          contains: [TITLE_MODE, Mode(ref: '~contains~5~contains~1')]),
+          contains: [titleMode, Mode(ref: '~contains~5~contains~1')]),
       Mode(ref: '~contains~5~contains~1')
     ]);

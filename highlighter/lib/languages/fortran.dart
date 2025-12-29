@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final fortran = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["f90", "f95"],
     keywords: {
       "literal": ".False. .True.",
@@ -21,21 +21,21 @@ final fortran = Mode(
           begin: "'",
           end: "'",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       Mode(
           className: "function",
           beginKeywords: "subroutine function program",
           illegal: "[\${=\\n]",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)")
           ]),
       Mode(
@@ -43,7 +43,7 @@ final fortran = Mode(
           begin: "!",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

@@ -9,7 +9,7 @@ final scilab = Mode(
           className: "string",
           begin: "'|\"",
           end: "'|\"",
-          contains: [BACKSLASH_ESCAPE, Mode(begin: "''")]),
+          contains: [cBackslashEscape, Mode(begin: "''")]),
     },
     aliases: ["sci"],
     lexemes: "%?\\w+",
@@ -27,7 +27,7 @@ final scilab = Mode(
           beginKeywords: "function",
           end: "\$",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)")
           ]),
       Mode(
@@ -38,14 +38,14 @@ final scilab = Mode(
           begin: "\\[",
           end: "\\]'*[\\.']*",
           relevance: 0,
-          contains: [C_NUMBER_MODE, Mode(ref: '~contains~2~contains~1')]),
+          contains: [cNumberMode, Mode(ref: '~contains~2~contains~1')]),
       Mode(className: "comment", begin: "//", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      C_NUMBER_MODE,
+      cNumberMode,
       Mode(ref: '~contains~2~contains~1')
     ]);

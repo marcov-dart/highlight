@@ -16,7 +16,7 @@ final gherkin = Mode(
           end: "\\|\\w*\$",
           contains: [Mode(className: "string", begin: "[^|]+")]),
       Mode(className: "variable", begin: "<", end: ">"),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(className: "string", begin: "\"\"\"", end: "\"\"\""),
-      QUOTE_STRING_MODE
+      quoteStringMode
     ]);

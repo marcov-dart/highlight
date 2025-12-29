@@ -30,10 +30,10 @@ final solidity = Mode(
                 "self this super selfdestruct suicide now msg block tx abi type blockhash gasleft assert revert require Error sha3 sha256 keccak256 ripemd160 ecrecover addmod mulmod log0 log1 log2 log3 log4send transfer call callcode delegatecall staticcall "
           },
           contains: [
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
-            APOS_STRING_MODE,
-            QUOTE_STRING_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
+            aposStringMode,
+            quoteStringMode,
             Mode(ref: '~contains~6'),
             Mode(self: true)
           ]),
@@ -80,12 +80,12 @@ final solidity = Mode(
     },
     lexemes: "[A-Za-z_\$][A-Za-z_\$0-9]*|\\*",
     contains: [
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      aposStringMode,
+      quoteStringMode,
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~3'),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~6'),
       Mode(
           className: "function",
@@ -96,8 +96,8 @@ final solidity = Mode(
           contains: [
             Mode(ref: '~contains~7~contains~0'),
             Mode(ref: '~contains~7~contains~1'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ],
           illegal: "%"),
       Mode(
@@ -155,8 +155,8 @@ final solidity = Mode(
                 beginKeywords: "is", lexemes: "[A-Za-z_\$][A-Za-z_\$0-9]*|\\*"),
             Mode(ref: '~contains~7~contains~0'),
             Mode(ref: '~contains~7~contains~1'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           lexemes: "[A-Za-z_\$][A-Za-z_\$0-9]*|\\*",
@@ -166,8 +166,8 @@ final solidity = Mode(
           illegal: "[:\"\\[\\]]",
           contains: [
             Mode(ref: '~contains~7~contains~0'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           beginKeywords: "import",
@@ -176,12 +176,12 @@ final solidity = Mode(
           keywords: "import * from as",
           contains: [
             Mode(ref: '~contains~7~contains~0'),
-            APOS_STRING_MODE,
-            QUOTE_STRING_MODE,
+            aposStringMode,
+            quoteStringMode,
             Mode(ref: '~contains~2'),
             Mode(ref: '~contains~3'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           beginKeywords: "using",
@@ -190,8 +190,8 @@ final solidity = Mode(
           keywords: "using * for",
           contains: [
             Mode(ref: '~contains~7~contains~0'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           className: "meta",
@@ -203,24 +203,24 @@ final solidity = Mode(
             "built_in": "ABIEncoderV2 SMTChecker"
           },
           contains: [
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
             Mode(
                 className: "meta-string",
                 begin: "'",
                 end: "'",
                 illegal: "\\n",
-                contains: [BACKSLASH_ESCAPE]),
+                contains: [cBackslashEscape]),
             Mode(
                 className: "meta-string",
                 begin: "\"",
                 end: "\"",
                 illegal: "\\n",
-                contains: [BACKSLASH_ESCAPE])
+                contains: [cBackslashEscape])
           ]),
       Mode(beginKeywords: "assembly", end: "\\b\\B", contains: [
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
         Mode(
             begin: "{",
             end: "}",
@@ -233,12 +233,12 @@ final solidity = Mode(
             },
             lexemes: "[A-Za-z_\$][A-Za-z_\$0-9.]*",
             contains: [
-              APOS_STRING_MODE,
-              QUOTE_STRING_MODE,
+              aposStringMode,
+              quoteStringMode,
               Mode(ref: '~contains~2'),
               Mode(ref: '~contains~3'),
-              C_LINE_COMMENT_MODE,
-              C_BLOCK_COMMENT_MODE,
+              cLimeCommentMode,
+              cBlockCommentMode,
               Mode(ref: '~contains~6'),
               Mode(ref: '~contains~18~contains~2~contains~7'),
               Mode(
@@ -252,12 +252,12 @@ final solidity = Mode(
                   },
                   lexemes: "[A-Za-z_\$][A-Za-z_\$0-9.]*",
                   contains: [
-                    APOS_STRING_MODE,
-                    QUOTE_STRING_MODE,
+                    aposStringMode,
+                    quoteStringMode,
                     Mode(ref: '~contains~2'),
                     Mode(ref: '~contains~3'),
-                    C_LINE_COMMENT_MODE,
-                    C_BLOCK_COMMENT_MODE,
+                    cLimeCommentMode,
+                    cBlockCommentMode,
                     Mode(ref: '~contains~6'),
                     Mode(ref: '~contains~18~contains~2~contains~7'),
                     Mode(self: true)

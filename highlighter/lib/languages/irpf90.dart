@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final irpf90 = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "literal": ".False. .True.",
       "keyword":
@@ -20,21 +20,21 @@ final irpf90 = Mode(
           begin: "'",
           end: "'",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       Mode(
           className: "function",
           beginKeywords: "subroutine function program",
           illegal: "[\${=\\n]",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)")
           ]),
       Mode(
@@ -42,7 +42,7 @@ final irpf90 = Mode(
           begin: "!",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -54,7 +54,7 @@ final irpf90 = Mode(
           begin: "begin_doc",
           end: "end_doc",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

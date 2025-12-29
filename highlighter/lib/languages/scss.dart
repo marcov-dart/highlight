@@ -10,11 +10,11 @@ final scss = Mode(
       '~contains~11~contains~1':
           Mode(className: "number", begin: "#[0-9A-Fa-f]+"),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "[=/|']",
     contains: [
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(className: "selector-id", begin: "\\#[A-Za-z0-9_-]+", relevance: 0),
       Mode(
           className: "selector-class",
@@ -46,9 +46,9 @@ final scss = Mode(
       Mode(begin: ":", end: ";", contains: [
         Mode(ref: '~contains~8'),
         Mode(ref: '~contains~11~contains~1'),
-        CSS_NUMBER_MODE,
-        QUOTE_STRING_MODE,
-        APOS_STRING_MODE,
+        cssNumberMode,
+        quoteStringMode,
+        aposStringMode,
         Mode(className: "meta", begin: "!important")
       ]),
       Mode(
@@ -63,9 +63,9 @@ final scss = Mode(
           contains: [
             Mode(begin: "@[a-z-]+", className: "keyword"),
             Mode(ref: '~contains~8'),
-            QUOTE_STRING_MODE,
-            APOS_STRING_MODE,
+            quoteStringMode,
+            aposStringMode,
             Mode(ref: '~contains~11~contains~1'),
-            CSS_NUMBER_MODE
+            cssNumberMode
           ])
     ]);

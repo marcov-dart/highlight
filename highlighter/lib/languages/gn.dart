@@ -25,7 +25,7 @@ final gn = Mode(refs: {}, aliases: [
       end: "\"",
       illegal: "\\n",
       contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(className: "subst", relevance: 2, variants: [
           Mode(begin: "\\\$[A-Za-z0-9_]+"),
           Mode(begin: "\\\${", end: "}", contains: [
@@ -34,5 +34,5 @@ final gn = Mode(refs: {}, aliases: [
         ]),
         Mode(className: "link", relevance: 5, begin: ":\\w+")
       ]),
-  HASH_COMMENT_MODE
+  hashCommentMode
 ]);

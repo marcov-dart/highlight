@@ -16,17 +16,17 @@ final aspectj = Mode(
           contains: [
             Mode(begin: "\\w+@", relevance: 0),
             Mode(className: "doctag", begin: "@[A-Za-z]+"),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      aposStringMode,
+      quoteStringMode,
       Mode(
           className: "class",
           beginKeywords: "aspect",
@@ -37,7 +37,7 @@ final aspectj = Mode(
             Mode(
                 beginKeywords:
                     "extends implements pertypewithin perthis pertarget percflowbelow percflow issingleton"),
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(
                 begin: "\\([^\\)]*",
                 end: "[)]+",
@@ -55,7 +55,7 @@ final aspectj = Mode(
           illegal: "[:\"\\[\\]]",
           contains: [
             Mode(beginKeywords: "extends implements"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(
           beginKeywords: "pointcut after before around throwing returning",
@@ -66,7 +66,7 @@ final aspectj = Mode(
             Mode(
                 begin: "[a-zA-Z_]\\w*\\s*\\(",
                 returnBegin: true,
-                contains: [UNDERSCORE_TITLE_MODE])
+                contains: [underscopeTitleMode])
           ]),
       Mode(
           begin: "[:]",
@@ -83,7 +83,7 @@ final aspectj = Mode(
                 keywords:
                     "false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else extends implements break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws privileged aspectOf adviceexecution proceed cflowbelow cflow initialization preinitialization staticinitialization withincode target within execution getWithinTypeName handler thisJoinPoint thisJoinPointStaticPart thisEnclosingJoinPointStaticPart declare parents warning error soft precedence thisAspectInstance get set args call",
                 relevance: 0),
-            QUOTE_STRING_MODE
+            quoteStringMode
           ]),
       Mode(beginKeywords: "new throw", relevance: 0),
       Mode(
@@ -100,7 +100,7 @@ final aspectj = Mode(
                 begin: "[a-zA-Z_]\\w*\\s*\\(",
                 returnBegin: true,
                 relevance: 0,
-                contains: [UNDERSCORE_TITLE_MODE]),
+                contains: [underscopeTitleMode]),
             Mode(
                 className: "params",
                 begin: "\\(",
@@ -109,14 +109,14 @@ final aspectj = Mode(
                 keywords:
                     "false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else extends implements break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws privileged aspectOf adviceexecution proceed cflowbelow cflow initialization preinitialization staticinitialization withincode target within execution getWithinTypeName handler thisJoinPoint thisJoinPointStaticPart thisEnclosingJoinPointStaticPart declare parents warning error soft precedence thisAspectInstance",
                 contains: [
-                  APOS_STRING_MODE,
-                  QUOTE_STRING_MODE,
-                  C_NUMBER_MODE,
-                  C_BLOCK_COMMENT_MODE
+                  aposStringMode,
+                  quoteStringMode,
+                  cNumberMode,
+                  cBlockCommentMode
                 ]),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
-      C_NUMBER_MODE,
+      cNumberMode,
       Mode(className: "meta", begin: "@[A-Za-z]+")
     ]);

@@ -13,7 +13,7 @@ final nginx = Mode(refs: {
 }, aliases: [
   "nginxconf"
 ], contains: [
-  HASH_COMMENT_MODE,
+  hashCommentMode,
   Mode(
       begin: "[a-zA-Z_]\\w*\\s+{",
       returnBegin: true,
@@ -38,9 +38,9 @@ final nginx = Mode(refs: {
                 relevance: 0,
                 illegal: "=>",
                 contains: [
-                  HASH_COMMENT_MODE,
+                  hashCommentMode,
                   Mode(className: "string", contains: [
-                    BACKSLASH_ESCAPE,
+                    cBackslashEscape,
                     Mode(
                         ref:
                             '~contains~2~contains~0~starts~contains~1~contains~1')
@@ -59,7 +59,7 @@ final nginx = Mode(refs: {
                                 '~contains~2~contains~0~starts~contains~1~contains~1')
                       ]),
                   Mode(className: "regexp", contains: [
-                    BACKSLASH_ESCAPE,
+                    cBackslashEscape,
                     Mode(
                         ref:
                             '~contains~2~contains~0~starts~contains~1~contains~1')

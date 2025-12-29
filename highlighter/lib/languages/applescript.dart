@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final applescript = Mode(refs: {
   '~contains~6': Mode(className: "comment", begin: "--", end: "\$", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -16,7 +16,7 @@ final applescript = Mode(refs: {
       begin: "\"",
       end: "\"",
       illegal: "",
-      contains: [BACKSLASH_ESCAPE]),
+      contains: [cBackslashEscape]),
 }, aliases: [
   "osascript"
 ], keywords: {
@@ -27,7 +27,7 @@ final applescript = Mode(refs: {
       "alias application boolean class constant date file integer list number real record string text activate beep count delay launch log offset read round run say summarize write character characters contents day frontmost id item length month name paragraph paragraphs rest reverse running time version weekday word words year"
 }, contains: [
   Mode(ref: '~contains~0'),
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(
       className: "built_in",
       begin:
@@ -40,22 +40,22 @@ final applescript = Mode(refs: {
       begin:
           "\\b(apart from|aside from|instead of|out of|greater than|isn't|(doesn't|does not) (equal|come before|come after|contain)|(greater|less) than( or equal)?|(starts?|ends|begins?) with|contained by|comes (before|after)|a (ref|reference)|POSIX file|POSIX path|(date|time) string|quoted form)\\b"),
   Mode(beginKeywords: "on", illegal: "[\${=;\\n]", contains: [
-    UNDERSCORE_TITLE_MODE,
+    underscopeTitleMode,
     Mode(
         className: "params",
         begin: "\\(",
         end: "\\)",
-        contains: [Mode(self: true), C_NUMBER_MODE, Mode(ref: '~contains~0')])
+        contains: [Mode(self: true), cNumberMode, Mode(ref: '~contains~0')])
   ]),
   Mode(ref: '~contains~6'),
   Mode(className: "comment", begin: "\\(\\*", end: "\\*\\)", contains: [
     Mode(self: true),
     Mode(ref: '~contains~6'),
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
         relevance: 0)
   ]),
-  HASH_COMMENT_MODE
+  hashCommentMode
 ], illegal: "//|->|=>|\\[\\[");

@@ -19,7 +19,7 @@ final sml = Mode(
       Mode(className: "literal", begin: "\\[(\\|\\|)?\\]|\\(\\)", relevance: 0),
       Mode(className: "comment", begin: "\\(\\*", end: "\\*\\)", contains: [
         Mode(self: true),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -34,14 +34,14 @@ final sml = Mode(
           begin: "'",
           end: "'",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       Mode(
           className: "number",
           begin:

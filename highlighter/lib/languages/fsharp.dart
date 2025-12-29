@@ -18,7 +18,7 @@ final fsharp = Mode(
           contains: [Mode(begin: "\"\"")]),
       Mode(className: "string", begin: "\"\"\"", end: "\"\"\""),
       Mode(className: "comment", begin: "\\(\\*", end: "\\*\\)", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -30,7 +30,7 @@ final fsharp = Mode(
           end: "\\(|=|\$",
           excludeEnd: true,
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(begin: "<", end: ">", contains: [
               Mode(className: "title", begin: "'[a-zA-Z0-9_]+", relevance: 0)
             ])
@@ -39,13 +39,13 @@ final fsharp = Mode(
       Mode(
           className: "symbol",
           begin: "\\B('[A-Za-z])\\b",
-          contains: [BACKSLASH_ESCAPE]),
-      C_LINE_COMMENT_MODE,
+          contains: [cBackslashEscape]),
+      cLimeCommentMode,
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
-      C_NUMBER_MODE
+          contains: [cBackslashEscape]),
+      cNumberMode
     ]);

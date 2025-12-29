@@ -5,9 +5,9 @@ import '../src/common_modes.dart';
 
 final tap = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(className: "meta", variants: [
         Mode(begin: "^TAP version (\\d+)\$"),
         Mode(begin: "^1\\.\\.(\\d+)\$")

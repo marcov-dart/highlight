@@ -5,11 +5,11 @@ import '../src/common_modes.dart';
 
 final htmlbars = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: ["xml"],
     contains: [
       Mode(className: "comment", begin: "{{!(--)?", end: "(--)?}}", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -32,7 +32,7 @@ final htmlbars = Mode(
                   "built_in":
                       "action collection component concat debugger each each-in else get hash if input link-to loc log mut outlet partial query-params render textarea unbound unless with yield view"
                 }, contains: [
-                  QUOTE_STRING_MODE,
+                  quoteStringMode,
                   Mode(
                       illegal: "\\}\\}",
                       begin: "[a-zA-Z0-9_]+=",
@@ -41,7 +41,7 @@ final htmlbars = Mode(
                       contains: [
                         Mode(className: "attr", begin: "[a-zA-Z0-9_]+")
                       ]),
-                  NUMBER_MODE
+                  numberMode
                 ]))
           ]),
       Mode(
@@ -54,6 +54,6 @@ final htmlbars = Mode(
                 "action collection component concat debugger each each-in else get hash if input link-to loc log mut outlet partial query-params render textarea unbound unless with yield view"
           },
           contains: [
-            QUOTE_STRING_MODE
+            quoteStringMode
           ])
     ]);

@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final cos = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["cos", "cls"],
     keywords:
         "property parameter class classmethod clientmethod extends as break catch close continue do d|0 else elseif for goto halt hang h|0 if job j|0 kill k|0 lock l|0 merge new open quit q|0 read r|0 return set s|0 tcommit throw trollback try tstart use view while write w|0 xecute x|0 zkill znspace zn ztrap zwrite zw zzdump zzwrite print zbreak zinsert zload zprint zremove zsave zzprint mv mvcall mvcrt mvdim mvprint zquit zsync ascii",
@@ -20,8 +20,8 @@ final cos = Mode(
             end: "\"",
             contains: [Mode(begin: "\"\"", relevance: 0)])
       ]),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(className: "comment", begin: ";", end: "\$", relevance: 0),
       Mode(className: "built_in", begin: "(?:\\\$\\\$?|\\.\\.)\\^?[a-zA-Z]+"),
       Mode(className: "built_in", begin: "\\\$\\\$\\\$[a-zA-Z]+"),

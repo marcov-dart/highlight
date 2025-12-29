@@ -4,7 +4,7 @@ import '../src/mode.dart';
 import '../src/common_modes.dart';
 
 final r = Mode(refs: {}, contains: [
-  HASH_COMMENT_MODE,
+  hashCommentMode,
   Mode(
       begin: "([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*",
       lexemes: "([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*",
@@ -30,6 +30,6 @@ final r = Mode(refs: {}, contains: [
   Mode(begin: "`", end: "`", relevance: 0),
   Mode(
       className: "string",
-      contains: [BACKSLASH_ESCAPE],
+      contains: [cBackslashEscape],
       variants: [Mode(begin: "\"", end: "\""), Mode(begin: "'", end: "'")])
 ]);

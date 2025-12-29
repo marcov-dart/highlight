@@ -15,4 +15,4 @@ final q = Mode(
           "`float `double int `timestamp `timespan `datetime `time `boolean `symbol `char `byte `short `long `real `month `date `minute `second `guid"
     },
     lexemes: "(`?)[A-Za-z0-9_]+\\b",
-    contains: [C_LINE_COMMENT_MODE, QUOTE_STRING_MODE, C_NUMBER_MODE]);
+    contains: [cLimeCommentMode, quoteStringMode, cNumberMode]);

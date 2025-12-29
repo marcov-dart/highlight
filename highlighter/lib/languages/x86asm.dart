@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final x86Asm = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[.%]?[a-zA-Z]\\w*",
     keywords: {
       "keyword":
@@ -21,7 +21,7 @@ final x86Asm = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -41,7 +41,7 @@ final x86Asm = Mode(
             begin:
                 "\\b(?:0[Xx][0-9A-Fa-f_]+|0[DdTt][0-9_]+|0[QqOo][0-7_]+|0[BbYy][0-1_]+)\\b")
       ]),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(
           className: "string",
           variants: [

@@ -9,9 +9,9 @@ final apache = Mode(
           Mode(className: "number", begin: "[\\\$%]\\d+"),
     },
     aliases: ["apacheconf"],
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(className: "section", begin: "</?", end: ">"),
       Mode(
           className: "attribute",
@@ -34,7 +34,7 @@ final apache = Mode(
                   Mode(ref: '~contains~2~starts~contains~1~contains~1')
                 ]),
             Mode(ref: '~contains~2~starts~contains~1~contains~1'),
-            QUOTE_STRING_MODE
+            quoteStringMode
           ]))
     ],
     illegal: "\\S");

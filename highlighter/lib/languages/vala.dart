@@ -15,12 +15,12 @@ final vala = Mode(refs: {}, keywords: {
       end: "{",
       excludeEnd: true,
       illegal: "[^,:\\n\\s\\.]",
-      contains: [UNDERSCORE_TITLE_MODE]),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+      contains: [underscopeTitleMode]),
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(className: "string", begin: "\"\"\"", end: "\"\"\"", relevance: 5),
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
-  C_NUMBER_MODE,
+  aposStringMode,
+  quoteStringMode,
+  cNumberMode,
   Mode(className: "meta", begin: "^#", end: "\$", relevance: 2)
 ]);

@@ -24,7 +24,7 @@ final julia = Mode(
       '~contains~2~contains~1~contains~3': Mode(
           className: "string",
           contains: [
-            BACKSLASH_ESCAPE,
+            cBackslashEscape,
             Mode(ref: '~contains~2~contains~1'),
             Mode(ref: '~contains~2~contains~1~contains~3~contains~2')
           ],
@@ -45,12 +45,12 @@ final julia = Mode(
         Mode(ref: '~contains~2~contains~1~contains~3'),
         Mode(ref: '~contains~2~contains~1~contains~4'),
         Mode(ref: '~contains~2~contains~1~contains~5'),
-        HASH_COMMENT_MODE,
+        hashCommentMode,
         Mode(ref: '~contains~2~contains~1~contains~7'),
         Mode(ref: '~contains~2~contains~1~contains~8')
       ]),
       '~contains~2': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~2~contains~1'),
         Mode(ref: '~contains~2~contains~1~contains~3~contains~2')
       ], variants: [
@@ -82,7 +82,7 @@ final julia = Mode(
       Mode(ref: '~contains~2~contains~1~contains~3'),
       Mode(ref: '~contains~2~contains~1~contains~4'),
       Mode(ref: '~contains~2~contains~1~contains~5'),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(ref: '~contains~2~contains~1~contains~7'),
       Mode(ref: '~contains~2~contains~1~contains~8')
     ]);

@@ -18,12 +18,12 @@ final javascript = Mode(refs: {
       className: "string",
       begin: "`",
       end: "`",
-      contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~4~starts~contains~1')]),
+      contains: [cBackslashEscape, Mode(ref: '~contains~4~starts~contains~1')]),
   '~contains~4~starts~contains~1~contains~3': Mode(
       begin: "css`",
       end: "",
       starts: Mode(end: "`", returnEnd: false, contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~4~starts~contains~1')
       ], subLanguage: [
         "css"
@@ -36,19 +36,19 @@ final javascript = Mode(refs: {
     "built_in":
         "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect Promise"
   }, contains: [
-    APOS_STRING_MODE,
-    QUOTE_STRING_MODE,
+    aposStringMode,
+    quoteStringMode,
     Mode(ref: '~contains~4'),
     Mode(ref: '~contains~4~starts~contains~1~contains~3'),
     Mode(ref: '~contains~4~starts~contains~1~contains~4'),
     Mode(ref: '~contains~4~starts~contains~1~contains~5'),
-    REGEXP_MODE
+    regExpMode
   ]),
   '~contains~4': Mode(
       begin: "html`",
       end: "",
       starts: Mode(end: "`", returnEnd: false, contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~4~starts~contains~1')
       ], subLanguage: [
         "xml"
@@ -70,12 +70,12 @@ final javascript = Mode(refs: {
       relevance: 10,
       begin: "^\\s*['\"]use (strict|asm)['\"]"),
   Mode(className: "meta", begin: "^#!", end: "\$"),
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
+  aposStringMode,
+  quoteStringMode,
   Mode(ref: '~contains~4'),
   Mode(ref: '~contains~4~starts~contains~1~contains~3'),
   Mode(ref: '~contains~4~starts~contains~1~contains~4'),
-  C_LINE_COMMENT_MODE,
+  cLimeCommentMode,
   Mode(
       className: "comment",
       begin: "/\\*\\*",
@@ -90,14 +90,14 @@ final javascript = Mode(refs: {
               relevance: 0),
           Mode(begin: "(?=[^\\n])\\s", relevance: 0)
         ]),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ],
       relevance: 0),
-  C_BLOCK_COMMENT_MODE,
+  cBlockCommentMode,
   Mode(ref: '~contains~4~starts~contains~1~contains~5'),
   Mode(begin: "[{,\\n]\\s*", relevance: 0, contains: [
     Mode(
@@ -116,9 +116,9 @@ final javascript = Mode(refs: {
           "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(case|return|throw)\\b)\\s*",
       keywords: "return throw case",
       contains: [
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        REGEXP_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
+        regExpMode,
         Mode(
             className: "function",
             begin: "(\\(.*?\\)|[A-Za-z\$_][0-9A-Za-z\$_]*)\\s*=>",
@@ -141,15 +141,15 @@ final javascript = Mode(refs: {
                           "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect Promise"
                     },
                     contains: [
-                      APOS_STRING_MODE,
-                      QUOTE_STRING_MODE,
+                      aposStringMode,
+                      quoteStringMode,
                       Mode(ref: '~contains~4'),
                       Mode(ref: '~contains~4~starts~contains~1~contains~3'),
                       Mode(ref: '~contains~4~starts~contains~1~contains~4'),
                       Mode(ref: '~contains~4~starts~contains~1~contains~5'),
-                      REGEXP_MODE,
-                      C_BLOCK_COMMENT_MODE,
-                      C_LINE_COMMENT_MODE
+                      regExpMode,
+                      cBlockCommentMode,
+                      cLimeCommentMode
                     ])
               ])
             ]),
@@ -187,26 +187,26 @@ final javascript = Mode(refs: {
             excludeBegin: true,
             excludeEnd: true,
             contains: [
-              APOS_STRING_MODE,
-              QUOTE_STRING_MODE,
+              aposStringMode,
+              quoteStringMode,
               Mode(ref: '~contains~4'),
               Mode(ref: '~contains~4~starts~contains~1~contains~3'),
               Mode(ref: '~contains~4~starts~contains~1~contains~4'),
               Mode(ref: '~contains~4~starts~contains~1~contains~5'),
-              REGEXP_MODE,
-              C_BLOCK_COMMENT_MODE,
-              C_LINE_COMMENT_MODE
+              regExpMode,
+              cBlockCommentMode,
+              cLimeCommentMode
             ])
       ],
       illegal: "\\[|%"),
   Mode(begin: "\\\$[(.]"),
-  METHOD_GUARD,
+  methodGuard,
   Mode(
       className: "class",
       beginKeywords: "class",
       end: "[{;=]",
       excludeEnd: true,
       illegal: "[:\"\\[\\]]",
-      contains: [Mode(beginKeywords: "extends"), UNDERSCORE_TITLE_MODE]),
+      contains: [Mode(beginKeywords: "extends"), underscopeTitleMode]),
   Mode(beginKeywords: "constructor get set", end: "\\{", excludeEnd: true)
 ], illegal: "#(?!!)");

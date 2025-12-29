@@ -17,17 +17,17 @@ final java = Mode(
           contains: [
             Mode(begin: "\\w+@", relevance: 0),
             Mode(className: "doctag", begin: "@[A-Za-z]+"),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      aposStringMode,
+      quoteStringMode,
       Mode(
           className: "class",
           beginKeywords: "class interface",
@@ -37,7 +37,7 @@ final java = Mode(
           illegal: "[:\"\\[\\]]",
           contains: [
             Mode(beginKeywords: "extends implements"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(beginKeywords: "new throw return else", relevance: 0),
       Mode(
@@ -54,7 +54,7 @@ final java = Mode(
                 begin: "[a-zA-Z_]\\w*\\s*\\(",
                 returnBegin: true,
                 relevance: 0,
-                contains: [UNDERSCORE_TITLE_MODE]),
+                contains: [underscopeTitleMode]),
             Mode(
                 className: "params",
                 begin: "\\(",
@@ -63,13 +63,13 @@ final java = Mode(
                     "false synchronized int abstract float private char boolean var static null if const for true while long strictfp finally protected import native final void enum else break transient catch instanceof byte super volatile case assert short package default double public try this switch continue throws protected public private module requires exports do",
                 relevance: 0,
                 contains: [
-                  APOS_STRING_MODE,
-                  QUOTE_STRING_MODE,
-                  C_NUMBER_MODE,
-                  C_BLOCK_COMMENT_MODE
+                  aposStringMode,
+                  quoteStringMode,
+                  cNumberMode,
+                  cBlockCommentMode
                 ]),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           className: "number",

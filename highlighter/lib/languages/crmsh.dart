@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final crmsh = Mode(
     refs: {},
     aliases: ["crm", "pcmk"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "params meta operations op rule attributes utilization read write deny defined not_defined in_range date spec in ref reference attribute type xpath version and or lt gt tag lte gte eq ne \\ number string",
@@ -14,7 +14,7 @@ final crmsh = Mode(
           "Master Started Slave Stopped start promote demote stop monitor true false"
     },
     contains: [
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(
           beginKeywords: "node",
           starts: Mode(
@@ -35,7 +35,7 @@ final crmsh = Mode(
       Mode(
           beginKeywords: "property rsc_defaults op_defaults",
           starts: Mode(className: "title", end: "\\s*([\\w_-]+:)?")),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(
           className: "meta",
           begin: "(ocf|systemd|service|lsb):[\\w_:-]+",

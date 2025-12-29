@@ -15,26 +15,26 @@ final groovy = Mode(refs: {}, keywords: {
       contains: [
         Mode(begin: "\\w+@", relevance: 0),
         Mode(className: "doctag", begin: "@[A-Za-z]+"),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ],
       relevance: 0),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(className: "string", begin: "\"\"\"", end: "\"\"\""),
   Mode(className: "string", begin: "'''", end: "'''"),
   Mode(className: "string", begin: "\\\$/", end: "/\\\$", relevance: 10),
-  APOS_STRING_MODE,
+  aposStringMode,
   Mode(
       className: "regexp",
       begin: "\\x7e?\\/[^\\/\\n]+\\/",
-      contains: [BACKSLASH_ESCAPE]),
-  QUOTE_STRING_MODE,
+      contains: [cBackslashEscape]),
+  quoteStringMode,
   Mode(className: "meta", begin: "^#!/usr/bin/env", end: "\$", illegal: "\n"),
-  BINARY_NUMBER_MODE,
+  binaryNumverMode,
   Mode(
       className: "class",
       beginKeywords: "class interface trait enum",
@@ -42,9 +42,9 @@ final groovy = Mode(refs: {}, keywords: {
       illegal: ":",
       contains: [
         Mode(beginKeywords: "extends implements"),
-        UNDERSCORE_TITLE_MODE
+        underscopeTitleMode
       ]),
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(className: "meta", begin: "@[A-Za-z]+"),
   Mode(className: "string", begin: "[^\\?]{0}[A-Za-z0-9_\$]+ *:"),
   Mode(begin: "\\?", end: "\\:"),

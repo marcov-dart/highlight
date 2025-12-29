@@ -14,7 +14,7 @@ final ini = Mode(
           ]),
       '~contains~2~starts~contains~1~contains~3':
           Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE
+        cBackslashEscape
       ], variants: [
         Mode(begin: "'''", end: "'''", relevance: 10),
         Mode(begin: "\"\"\"", end: "\"\"\"", relevance: 10),
@@ -30,7 +30,7 @@ final ini = Mode(
       '~contains~2~starts~contains~1~contains~1':
           Mode(className: "literal", begin: "\\bon|off|true|false|yes|no\\b"),
       '~contains~0': Mode(className: "comment", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -41,7 +41,7 @@ final ini = Mode(
       ]),
     },
     aliases: ["toml"],
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "\\S",
     contains: [
       Mode(ref: '~contains~0'),

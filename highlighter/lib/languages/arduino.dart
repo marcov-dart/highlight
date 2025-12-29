@@ -17,8 +17,8 @@ final arduino = Mode(
         Mode(ref: '~contains~0~contains~4~variants~2')
       ]),
       Mode(className: "meta-string", begin: "<.*?>", end: "\$", illegal: "\\n"),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE
+      cLimeCommentMode,
+      cBlockCommentMode
     ]),
     '~contains~0~contains~4~variants~2':
         Mode(begin: "(?:u8?|U|L)?R\"([^()\\\\ ]{0,16})\\((?:.|\\n)*?\\)\\1\""),
@@ -31,7 +31,7 @@ final arduino = Mode(
         begin: "(u8?|U|L)?\"",
         end: "\"",
         illegal: "\\n",
-        contains: [BACKSLASH_ESCAPE]),
+        contains: [cBackslashEscape]),
     '~contains~0~contains~4': Mode(className: "string", variants: [
       Mode(ref: '~contains~0~contains~4~variants~0'),
       Mode(ref: '~contains~0~contains~4~variants~1'),
@@ -76,8 +76,8 @@ final arduino = Mode(
           "true false nullptr NULL DIGITAL_MESSAGE FIRMATA_STRING ANALOG_MESSAGE REPORT_DIGITAL REPORT_ANALOG INPUT_PULLUP SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL DEFAULT OUTPUT INPUT HIGH LOW"
     }, contains: [
       Mode(ref: '~contains~0~contains~0'),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~0~contains~3'),
       Mode(ref: '~contains~0~contains~4'),
       Mode(
@@ -93,8 +93,8 @@ final arduino = Mode(
           },
           contains: [
             Mode(ref: '~contains~0~contains~0'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~0~contains~3'),
             Mode(ref: '~contains~0~contains~4'),
             Mode(self: true)
@@ -153,8 +153,8 @@ final arduino = Mode(
               },
               relevance: 0,
               contains: [
-                C_LINE_COMMENT_MODE,
-                C_BLOCK_COMMENT_MODE,
+                cLimeCommentMode,
+                cBlockCommentMode,
                 Mode(ref: '~contains~0~contains~4'),
                 Mode(ref: '~contains~0~contains~3'),
                 Mode(ref: '~contains~0~contains~0'),
@@ -172,21 +172,21 @@ final arduino = Mode(
                     relevance: 0,
                     contains: [
                       Mode(self: true),
-                      C_LINE_COMMENT_MODE,
-                      C_BLOCK_COMMENT_MODE,
+                      cLimeCommentMode,
+                      cBlockCommentMode,
                       Mode(ref: '~contains~0~contains~4'),
                       Mode(ref: '~contains~0~contains~3'),
                       Mode(ref: '~contains~0~contains~0')
                     ])
               ]),
           Mode(ref: '~contains~0~contains~0'),
-          C_LINE_COMMENT_MODE,
-          C_BLOCK_COMMENT_MODE,
+          cLimeCommentMode,
+          cBlockCommentMode,
           Mode(ref: '~contains~1~contains~6')
         ]),
     Mode(ref: '~contains~0~contains~0'),
-    C_LINE_COMMENT_MODE,
-    C_BLOCK_COMMENT_MODE,
+    cLimeCommentMode,
+    cBlockCommentMode,
     Mode(ref: '~contains~0~contains~3'),
     Mode(ref: '~contains~0~contains~4'),
     Mode(ref: '~contains~1~contains~6'),
@@ -220,7 +220,7 @@ final arduino = Mode(
         end: "[{;:]",
         contains: [
           Mode(begin: "<", end: ">", contains: [Mode(self: true)]),
-          TITLE_MODE
+          titleMode
         ])
   ],
 );

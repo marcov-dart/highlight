@@ -66,7 +66,7 @@ final lisp = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -78,7 +78,7 @@ final lisp = Mode(
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~2': Mode(className: "literal", begin: "\\b(t{1}|nil)\\b"),
       '~contains~0': Mode(className: "number", variants: [
         Mode(

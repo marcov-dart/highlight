@@ -13,8 +13,8 @@ final jbossCli = Mode(
       "literal": "true false"
     },
     contains: [
-      HASH_COMMENT_MODE,
-      QUOTE_STRING_MODE,
+      hashCommentMode,
+      quoteStringMode,
       Mode(className: "params", begin: "--[\\w\\-=\\/]+"),
       Mode(className: "function", begin: ":[\\w\\-.]+", relevance: 0),
       Mode(className: "string", begin: "\\B(([\\/.])[\\w\\-.\\/=]+)+"),

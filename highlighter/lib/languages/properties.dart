@@ -14,11 +14,11 @@ final properties = Mode(
               relevance: 0,
               contains: [Mode(begin: "\\\\\\n")])),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "\\S",
     contains: [
       Mode(className: "comment", begin: "^\\s*[!#]", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

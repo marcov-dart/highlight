@@ -10,22 +10,22 @@ final actionscript = Mode(refs: {}, aliases: [
       "as break case catch class const continue default delete do dynamic each else extends final finally for function get if implements import in include instanceof interface internal is namespace native new override package private protected public return set static super switch this throw try typeof use var void while with",
   "literal": "true false null undefined"
 }, contains: [
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
-  C_NUMBER_MODE,
+  aposStringMode,
+  quoteStringMode,
+  cLimeCommentMode,
+  cBlockCommentMode,
+  cNumberMode,
   Mode(
       className: "class",
       beginKeywords: "package",
       end: "{",
-      contains: [TITLE_MODE]),
+      contains: [titleMode]),
   Mode(
       className: "class",
       beginKeywords: "class interface",
       end: "{",
       excludeEnd: true,
-      contains: [Mode(beginKeywords: "extends implements"), TITLE_MODE]),
+      contains: [Mode(beginKeywords: "extends implements"), titleMode]),
   Mode(
       className: "meta",
       beginKeywords: "import include",
@@ -38,12 +38,12 @@ final actionscript = Mode(refs: {}, aliases: [
       excludeEnd: true,
       illegal: "\\S",
       contains: [
-        TITLE_MODE,
+        titleMode,
         Mode(className: "params", begin: "\\(", end: "\\)", contains: [
-          APOS_STRING_MODE,
-          QUOTE_STRING_MODE,
-          C_LINE_COMMENT_MODE,
-          C_BLOCK_COMMENT_MODE,
+          aposStringMode,
+          quoteStringMode,
+          cLimeCommentMode,
+          cBlockCommentMode,
           Mode(
               className: "rest_arg",
               begin: "[.]{3}",
@@ -52,5 +52,5 @@ final actionscript = Mode(refs: {}, aliases: [
         ]),
         Mode(begin: ":\\s*([*]|[a-zA-Z_\$][a-zA-Z0-9_\$]*)")
       ]),
-  METHOD_GUARD
+  methodGuard
 ], illegal: "#");

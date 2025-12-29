@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final qml = Mode(
     refs: {},
     aliases: ["qt"],
-    case_insensitive: false,
+    caseInsensitive: false,
     keywords: {
       "keyword":
           "in of on if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const export super debugger as async await import",
@@ -16,14 +16,14 @@ final qml = Mode(
     },
     contains: [
       Mode(className: "meta", begin: "^\\s*['\"]use (strict|asm)['\"]"),
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      aposStringMode,
+      quoteStringMode,
       Mode(className: "string", begin: "`", end: "`", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(className: "subst", begin: "\\\$\\{", end: "\\}")
       ]),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(
           className: "number",
           variants: [
@@ -39,9 +39,9 @@ final qml = Mode(
               "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(case|return|throw)\\b)\\s*",
           keywords: "return throw case",
           contains: [
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
-            REGEXP_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
+            regExpMode,
             Mode(
                 begin: "<",
                 end: ">\\s*[);\\]]",
@@ -79,7 +79,7 @@ final qml = Mode(
                 end: "\\)",
                 excludeBegin: true,
                 excludeEnd: true,
-                contains: [C_LINE_COMMENT_MODE, C_BLOCK_COMMENT_MODE])
+                contains: [cLimeCommentMode, cBlockCommentMode])
           ],
           illegal: "\\[|%"),
       Mode(begin: "\\.[a-zA-Z]\\w*", relevance: 0),

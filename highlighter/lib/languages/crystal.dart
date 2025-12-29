@@ -34,7 +34,7 @@ final crystal = Mode(
           end: "\$|;",
           illegal: "=",
           contains: [
-            HASH_COMMENT_MODE,
+            hashCommentMode,
             Mode(
                 className: "title",
                 begin: "[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",
@@ -47,7 +47,7 @@ final crystal = Mode(
           end: "\$|;",
           illegal: "=",
           contains: [
-            HASH_COMMENT_MODE,
+            hashCommentMode,
             Mode(
                 className: "title",
                 begin: "[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",
@@ -60,7 +60,7 @@ final crystal = Mode(
           end: "\$|;",
           illegal: "=",
           contains: [
-            HASH_COMMENT_MODE,
+            hashCommentMode,
             Mode(
                 className: "title",
                 begin: "[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",
@@ -74,7 +74,7 @@ final crystal = Mode(
             begin: "\"",
             end: "\"",
             illegal: "\\n",
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
       '~contains~0~contains~0~contains~1~contains~4': Mode(
           begin:
@@ -82,7 +82,7 @@ final crystal = Mode(
           keywords: "case if select unless until when while",
           contains: [
             Mode(className: "regexp", contains: [
-              BACKSLASH_ESCAPE,
+              cBackslashEscape,
               Mode(ref: '~contains~0~contains~0~contains~1')
             ], variants: [
               Mode(begin: "//[a-z]*", relevance: 0),
@@ -117,7 +117,7 @@ final crystal = Mode(
       '~contains~0~contains~0~contains~1~contains~3': Mode(
           className: "regexp",
           contains: [
-            BACKSLASH_ESCAPE,
+            cBackslashEscape,
             Mode(ref: '~contains~0~contains~0~contains~1')
           ],
           variants: [
@@ -256,7 +256,7 @@ final crystal = Mode(
         Mode(ref: '~contains~0~contains~0~contains~1~contains~3'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~4'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~5'),
-        HASH_COMMENT_MODE,
+        hashCommentMode,
         Mode(ref: '~contains~0~contains~0~contains~1~contains~7'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~8'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~9'),
@@ -269,7 +269,7 @@ final crystal = Mode(
       '~contains~0~contains~0': Mode(
           className: "string",
           contains: [
-            BACKSLASH_ESCAPE,
+            cBackslashEscape,
             Mode(ref: '~contains~0~contains~0~contains~1')
           ],
           variants: [
@@ -305,7 +305,7 @@ final crystal = Mode(
         Mode(ref: '~contains~0~contains~0~contains~1~contains~3'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~4'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~5'),
-        HASH_COMMENT_MODE,
+        hashCommentMode,
         Mode(ref: '~contains~0~contains~0~contains~1~contains~7'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~8'),
         Mode(ref: '~contains~0~contains~0~contains~1~contains~9'),
@@ -330,7 +330,7 @@ final crystal = Mode(
       Mode(ref: '~contains~0~contains~0~contains~1~contains~3'),
       Mode(ref: '~contains~0~contains~0~contains~1~contains~4'),
       Mode(ref: '~contains~0~contains~0~contains~1~contains~5'),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(ref: '~contains~0~contains~0~contains~1~contains~7'),
       Mode(ref: '~contains~0~contains~0~contains~1~contains~8'),
       Mode(ref: '~contains~0~contains~0~contains~1~contains~9'),

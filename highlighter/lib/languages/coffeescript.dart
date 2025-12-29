@@ -18,7 +18,7 @@ final coffeescript = Mode(
                   "npm require console print module global window document"
             }, contains: [
               Mode(self: true),
-              BINARY_NUMBER_MODE,
+              binaryNumverMode,
               Mode(ref: '~contains~1'),
               Mode(ref: '~contains~2'),
               Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),
@@ -44,7 +44,7 @@ final coffeescript = Mode(
           Mode(className: "regexp", variants: [
         Mode(begin: "///", end: "///", contains: [
           Mode(ref: '~contains~2~variants~2~contains~1'),
-          HASH_COMMENT_MODE
+          hashCommentMode
         ]),
         Mode(begin: "//[gim]{0,3}(?=\\W)", relevance: 0),
         Mode(begin: "\\/(?![ *]).*?(?![\\\\]).\\/[gim]{0,3}(?=\\W)")
@@ -56,7 +56,7 @@ final coffeescript = Mode(
         "literal": "true false null undefined yes no on off",
         "built_in": "npm require console print module global window document"
       }, contains: [
-        BINARY_NUMBER_MODE,
+        binaryNumverMode,
         Mode(ref: '~contains~1'),
         Mode(ref: '~contains~2'),
         Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),
@@ -64,14 +64,14 @@ final coffeescript = Mode(
         Mode(ref: '~contains~2~variants~2~contains~1~contains~5')
       ]),
       '~contains~2': Mode(className: "string", variants: [
-        Mode(begin: "'''", end: "'''", contains: [BACKSLASH_ESCAPE]),
-        Mode(begin: "'", end: "'", contains: [BACKSLASH_ESCAPE]),
+        Mode(begin: "'''", end: "'''", contains: [cBackslashEscape]),
+        Mode(begin: "'", end: "'", contains: [cBackslashEscape]),
         Mode(begin: "\"\"\"", end: "\"\"\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~2~variants~2~contains~1')
         ]),
         Mode(begin: "\"", end: "\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~2~variants~2~contains~1')
         ])
       ]),
@@ -91,20 +91,20 @@ final coffeescript = Mode(
     },
     illegal: "\\/\\*",
     contains: [
-      BINARY_NUMBER_MODE,
+      binaryNumverMode,
       Mode(ref: '~contains~1'),
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~4'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~5'),
       Mode(className: "comment", begin: "###", end: "###", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(
           className: "function",
           begin:

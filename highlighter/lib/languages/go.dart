@@ -15,11 +15,11 @@ final go = Mode(
     },
     illegal: "</",
     contains: [
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(className: "string", variants: [
-        QUOTE_STRING_MODE,
-        APOS_STRING_MODE,
+        quoteStringMode,
+        aposStringMode,
         Mode(begin: "`", end: "`")
       ]),
       Mode(className: "number", variants: [
@@ -27,7 +27,7 @@ final go = Mode(
             begin:
                 "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)[i]",
             relevance: 1),
-        C_NUMBER_MODE
+        cNumberMode
       ]),
       Mode(begin: ":="),
       Mode(
@@ -36,7 +36,7 @@ final go = Mode(
           end: "\\s*(\\{|\$)",
           excludeEnd: true,
           contains: [
-            TITLE_MODE,
+            titleMode,
             Mode(
                 className: "params",
                 begin: "\\(",

@@ -9,9 +9,9 @@ final protobuf = Mode(refs: {}, keywords: {
       "double float int32 int64 uint32 uint64 sint32 sint64 fixed32 fixed64 sfixed32 sfixed64 bool string bytes",
   "literal": "true false"
 }, contains: [
-  QUOTE_STRING_MODE,
-  NUMBER_MODE,
-  C_LINE_COMMENT_MODE,
+  quoteStringMode,
+  numberMode,
+  cLimeCommentMode,
   Mode(
       className: "class",
       beginKeywords: "message enum service",

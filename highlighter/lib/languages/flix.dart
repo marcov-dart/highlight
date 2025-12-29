@@ -8,8 +8,8 @@ final flix = Mode(refs: {}, keywords: {
   "keyword":
       "case class def else enum if impl import in lat rel index let match namespace switch type yield with"
 }, contains: [
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(className: "string", begin: "'(.|\\\\[xXuU][a-zA-Z0-9]+)'"),
   Mode(className: "string", variants: [Mode(begin: "\"", end: "\"")]),
   Mode(
@@ -23,5 +23,5 @@ final flix = Mode(refs: {}, keywords: {
             begin:
                 "[^0-9\\n\\t \"'(),.`{}\\[\\]:;][^\\n\\t \"'(),.`{}\\[\\]:;]+|[^0-9\\n\\t \"'(),.`{}\\[\\]:;=]")
       ]),
-  C_NUMBER_MODE
+  cNumberMode
 ]);

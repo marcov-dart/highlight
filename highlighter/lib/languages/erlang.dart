@@ -17,7 +17,7 @@ final erlang = Mode(
               Mode(ref: '~contains~0~contains~0~contains~1'),
               Mode(ref: '~contains~0~contains~0~contains~2'),
               Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-              QUOTE_STRING_MODE,
+              quoteStringMode,
               Mode(
                   ref:
                       '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -45,7 +45,7 @@ final erlang = Mode(
         Mode(ref: '~contains~0~contains~0~contains~1'),
         Mode(ref: '~contains~0~contains~0~contains~2'),
         Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-        QUOTE_STRING_MODE,
+        quoteStringMode,
         Mode(
             ref:
                 '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -89,7 +89,7 @@ final erlang = Mode(
                   Mode(ref: '~contains~0~contains~0~contains~1'),
                   Mode(ref: '~contains~0~contains~0~contains~2'),
                   Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-                  QUOTE_STRING_MODE,
+                  quoteStringMode,
                   Mode(
                       ref:
                           '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -120,10 +120,10 @@ final erlang = Mode(
             begin: "'",
             end: "'",
             illegal: "\\n",
-            contains: [BACKSLASH_ESCAPE]),
+            contains: [cBackslashEscape]),
         Mode(ref: '~contains~0~contains~0~contains~2'),
         Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-        QUOTE_STRING_MODE,
+        quoteStringMode,
         Mode(
             ref:
                 '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -144,7 +144,7 @@ final erlang = Mode(
           Mode(begin: "fun\\s+[a-z'][a-zA-Z0-9_']*/\\d+"),
       '~contains~0~contains~0~contains~0':
           Mode(className: "comment", begin: "%", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -156,7 +156,7 @@ final erlang = Mode(
         Mode(ref: '~contains~0~contains~0~contains~1'),
         Mode(ref: '~contains~0~contains~0~contains~2'),
         Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-        QUOTE_STRING_MODE,
+        quoteStringMode,
         Mode(
             ref:
                 '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -202,7 +202,7 @@ final erlang = Mode(
             Mode(ref: '~contains~0~contains~0~contains~1'),
             Mode(ref: '~contains~0~contains~0~contains~2'),
             Mode(ref: '~contains~0~contains~0~contains~2~contains~4'),
-            QUOTE_STRING_MODE,
+            quoteStringMode,
             Mode(
                 ref:
                     '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
@@ -233,7 +233,7 @@ final erlang = Mode(
       Mode(
           ref:
               '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~5'),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(
           ref:
               '~contains~0~contains~0~contains~2~contains~4~contains~1~contains~6~contains~9'),

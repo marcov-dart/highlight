@@ -23,11 +23,11 @@ final twig = Mode(
           ]),
     },
     aliases: ["craftcms"],
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: ["xml"],
     contains: [
       Mode(className: "comment", begin: "\\{#", end: "#}", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

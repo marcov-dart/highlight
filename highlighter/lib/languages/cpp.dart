@@ -17,8 +17,8 @@ final cpp = Mode(
         Mode(ref: '~contains~0~contains~4~variants~2')
       ]),
       Mode(className: "meta-string", begin: "<.*?>", end: "\$", illegal: "\\n"),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE
+      cLimeCommentMode,
+      cBlockCommentMode
     ]),
     '~contains~0~contains~4~variants~2':
         Mode(begin: "(?:u8?|U|L)?R\"([^()\\\\ ]{0,16})\\((?:.|\\n)*?\\)\\1\""),
@@ -31,7 +31,7 @@ final cpp = Mode(
         begin: "(u8?|U|L)?\"",
         end: "\"",
         illegal: "\\n",
-        contains: [BACKSLASH_ESCAPE]),
+        contains: [cBackslashEscape]),
     '~contains~0~contains~4': Mode(className: "string", variants: [
       Mode(ref: '~contains~0~contains~4~variants~0'),
       Mode(ref: '~contains~0~contains~4~variants~1'),
@@ -74,8 +74,8 @@ final cpp = Mode(
       "literal": "true false nullptr NULL"
     }, contains: [
       Mode(ref: '~contains~0~contains~0'),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~0~contains~3'),
       Mode(ref: '~contains~0~contains~4'),
       Mode(
@@ -90,8 +90,8 @@ final cpp = Mode(
           },
           contains: [
             Mode(ref: '~contains~0~contains~0'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~0~contains~3'),
             Mode(ref: '~contains~0~contains~4'),
             Mode(self: true)
@@ -147,8 +147,8 @@ final cpp = Mode(
               },
               relevance: 0,
               contains: [
-                C_LINE_COMMENT_MODE,
-                C_BLOCK_COMMENT_MODE,
+                cLimeCommentMode,
+                cBlockCommentMode,
                 Mode(ref: '~contains~0~contains~4'),
                 Mode(ref: '~contains~0~contains~3'),
                 Mode(ref: '~contains~0~contains~0'),
@@ -165,21 +165,21 @@ final cpp = Mode(
                     relevance: 0,
                     contains: [
                       Mode(self: true),
-                      C_LINE_COMMENT_MODE,
-                      C_BLOCK_COMMENT_MODE,
+                      cLimeCommentMode,
+                      cBlockCommentMode,
                       Mode(ref: '~contains~0~contains~4'),
                       Mode(ref: '~contains~0~contains~3'),
                       Mode(ref: '~contains~0~contains~0')
                     ])
               ]),
           Mode(ref: '~contains~0~contains~0'),
-          C_LINE_COMMENT_MODE,
-          C_BLOCK_COMMENT_MODE,
+          cLimeCommentMode,
+          cBlockCommentMode,
           Mode(ref: '~contains~1~contains~6')
         ]),
     Mode(ref: '~contains~0~contains~0'),
-    C_LINE_COMMENT_MODE,
-    C_BLOCK_COMMENT_MODE,
+    cLimeCommentMode,
+    cBlockCommentMode,
     Mode(ref: '~contains~0~contains~3'),
     Mode(ref: '~contains~0~contains~4'),
     Mode(ref: '~contains~1~contains~6'),
@@ -211,7 +211,7 @@ final cpp = Mode(
         end: "[{;:]",
         contains: [
           Mode(begin: "<", end: ">", contains: [Mode(self: true)]),
-          TITLE_MODE
+          titleMode
         ])
   ],
 );

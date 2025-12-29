@@ -22,14 +22,14 @@ final lang1C = Mode(
           Mode(className: "number", begin: "\\b\\d+(\\.\\d+)?", relevance: 0),
       '~contains~0~contains~0':
           Mode(className: "comment", begin: "//", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
     keywords: {
       "keyword":

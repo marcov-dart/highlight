@@ -48,7 +48,7 @@ final ruby = Mode(
                 Mode(
                     className: "regexp",
                     contains: [
-                      BACKSLASH_ESCAPE,
+                      cBackslashEscape,
                       Mode(ref: '~contains~3~starts~contains~0~contains~1')
                     ],
                     illegal: "\\n",
@@ -179,7 +179,7 @@ final ruby = Mode(
         Mode(ref: '~contains~2')
       ]),
       '~contains~3~starts~contains~0': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~3~starts~contains~0~contains~1')
       ], variants: [
         Mode(begin: "'", end: "'"),
@@ -202,7 +202,7 @@ final ruby = Mode(
             contains: [
               Mode(begin: "<<[-\\x7e]?'?"),
               Mode(begin: "\\w+", endSameAsBegin: true, contains: [
-                BACKSLASH_ESCAPE,
+                cBackslashEscape,
                 Mode(ref: '~contains~3~starts~contains~0~contains~1')
               ])
             ])
@@ -212,7 +212,7 @@ final ruby = Mode(
           begin: "^__END__",
           end: "\\n\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -224,7 +224,7 @@ final ruby = Mode(
           end: "^\\=end",
           contains: [
             Mode(ref: '~contains~0~contains~0'),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -235,7 +235,7 @@ final ruby = Mode(
       '~contains~0':
           Mode(className: "comment", begin: "#", end: "\$", contains: [
         Mode(ref: '~contains~0~contains~0'),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

@@ -36,8 +36,8 @@ final gauss = Mode(
         "literal":
             "DB_AFTER_LAST_ROW DB_ALL_TABLES DB_BATCH_OPERATIONS DB_BEFORE_FIRST_ROW DB_BLOB DB_EVENT_NOTIFICATIONS DB_FINISH_QUERY DB_HIGH_PRECISION DB_LAST_INSERT_ID DB_LOW_PRECISION_DOUBLE DB_LOW_PRECISION_INT32 DB_LOW_PRECISION_INT64 DB_LOW_PRECISION_NUMBERS DB_MULTIPLE_RESULT_SETS DB_NAMED_PLACEHOLDERS DB_POSITIONAL_PLACEHOLDERS DB_PREPARED_QUERIES DB_QUERY_SIZE DB_SIMPLE_LOCKING DB_SYSTEM_TABLES DB_TABLES DB_TRANSACTIONS DB_UNICODE DB_VIEWS __STDIN __STDOUT __STDERR __FILE_DIR"
       }, contains: [
-        C_NUMBER_MODE,
-        C_BLOCK_COMMENT_MODE,
+        cNumberMode,
+        cBlockCommentMode,
         Mode(ref: '~contains~3'),
         Mode(ref: '~contains~9~contains~2~contains~3'),
         Mode(ref: '~contains~9~contains~2~contains~4'),
@@ -63,8 +63,8 @@ final gauss = Mode(
           relevance: 0,
           contains: [
             Mode(className: "literal", begin: "\\.\\.\\."),
-            C_NUMBER_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cNumberMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~3'),
             Mode(ref: '~contains~7~contains~0~contains~4')
           ]),
@@ -72,11 +72,11 @@ final gauss = Mode(
           className: "string",
           begin: "\"",
           end: "\"",
-          contains: [BACKSLASH_ESCAPE],
+          contains: [cBackslashEscape],
           relevance: 0),
       '~contains~3':
           Mode(className: "comment", begin: "@", end: "@", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -84,7 +84,7 @@ final gauss = Mode(
       ]),
     },
     aliases: ["gss"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "bool break call callexe checkinterrupt clear clearg closeall cls comlog compile continue create debug declare delete disable dlibrary dllcall do dos ed edit else elseif enable end endfor endif endp endo errorlog errorlogat expr external fn for format goto gosub graph if keyword let lib library line load loadarray loadexe loadf loadk loadm loadp loads loadx local locate loopnextindex lprint lpwidth lshow matrix msym ndpclex new open output outwidth plot plotsym pop prcsn print printdos proc push retp return rndcon rndmod rndmult rndseed run save saveall screen scroll setarray show sparse stop string struct system trace trap threadfor threadendfor threadbegin threadjoin threadstat threadend until use while winprint ne ge le gt lt and xor or not eq eqv",
@@ -95,9 +95,9 @@ final gauss = Mode(
     },
     illegal: "(\\{[%#]|[%#]\\}| <- )",
     contains: [
-      C_NUMBER_MODE,
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cNumberMode,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~3'),
       Mode(ref: '~contains~4'),
       Mode(className: "meta", begin: "#", end: "\$", keywords: {
@@ -110,8 +110,8 @@ final gauss = Mode(
         }, contains: [
           Mode(className: "meta-string", begin: "\"", end: "\"", illegal: "\\n")
         ]),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
         Mode(ref: '~contains~3')
       ]),
       Mode(
@@ -126,8 +126,8 @@ final gauss = Mode(
           contains: [
             Mode(ref: '~contains~7~contains~0'),
             Mode(ref: '~contains~7~contains~1'),
-            C_NUMBER_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cNumberMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~3')
           ]),
       Mode(
@@ -138,12 +138,12 @@ final gauss = Mode(
           contains: [
             Mode(ref: '~contains~7~contains~0'),
             Mode(ref: '~contains~7~contains~1'),
-            C_NUMBER_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cNumberMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~3')
           ]),
       Mode(beginKeywords: "for threadfor", end: ";", relevance: 0, contains: [
-        C_BLOCK_COMMENT_MODE,
+        cBlockCommentMode,
         Mode(ref: '~contains~3'),
         Mode(ref: '~contains~9~contains~2')
       ]),

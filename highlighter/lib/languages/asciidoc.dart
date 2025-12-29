@@ -11,7 +11,7 @@ final asciidoc = Mode(refs: {}, aliases: [
       begin: "^/{4,}\\n",
       end: "\\n/{4,}\$",
       contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -23,7 +23,7 @@ final asciidoc = Mode(refs: {}, aliases: [
       begin: "^//",
       end: "\$",
       contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

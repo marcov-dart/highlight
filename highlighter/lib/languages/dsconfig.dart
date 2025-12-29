@@ -33,5 +33,5 @@ final dsconfig = Mode(
           end: "\\W",
           relevance: 0),
       Mode(className: "string", begin: "\\w+-?\\w+", end: "\\W", relevance: 0),
-      HASH_COMMENT_MODE
+      hashCommentMode
     ]);

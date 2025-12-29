@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final monkey = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "public private property continue exit extern new try catch eachin not abstract final select case default const local global field end if then else elseif endif while wend repeat until forever for to step next return module inline throw import",
@@ -16,7 +16,7 @@ final monkey = Mode(
     illegal: "\\/\\*",
     contains: [
       Mode(className: "comment", begin: "#rem", end: "#end", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -27,7 +27,7 @@ final monkey = Mode(
           begin: "'",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -39,14 +39,14 @@ final monkey = Mode(
           beginKeywords: "function method",
           end: "[(=:]|\$",
           illegal: "\\n",
-          contains: [UNDERSCORE_TITLE_MODE]),
+          contains: [underscopeTitleMode]),
       Mode(
           className: "class",
           beginKeywords: "class interface",
           end: "\$",
           contains: [
             Mode(beginKeywords: "extends implements"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(className: "built_in", begin: "\\b(self|super)\\b"),
       Mode(
@@ -55,10 +55,10 @@ final monkey = Mode(
           end: "\$",
           keywords: {"meta-keyword": "if else elseif endif end then"}),
       Mode(className: "meta", begin: "^\\s*strict\\b"),
-      Mode(beginKeywords: "alias", end: "=", contains: [UNDERSCORE_TITLE_MODE]),
-      QUOTE_STRING_MODE,
+      Mode(beginKeywords: "alias", end: "=", contains: [underscopeTitleMode]),
+      quoteStringMode,
       Mode(
           className: "number",
           relevance: 0,
-          variants: [Mode(begin: "[\$][a-fA-F0-9]+"), NUMBER_MODE])
+          variants: [Mode(begin: "[\$][a-fA-F0-9]+"), numberMode])
     ]);

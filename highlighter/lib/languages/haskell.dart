@@ -9,7 +9,7 @@ final haskell = Mode(
           Mode(className: "type", begin: "\\b[A-Z][\\w']*", relevance: 0),
       '~contains~0~contains~0~contains~4': Mode(variants: [
         Mode(className: "comment", begin: "--", end: "\$", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -17,7 +17,7 @@ final haskell = Mode(
         ]),
         Mode(className: "comment", begin: "{-", end: "-}", contains: [
           Mode(self: true),
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -97,7 +97,7 @@ final haskell = Mode(
         Mode(ref: '~contains~0~contains~0~contains~4')
       ]),
       Mode(beginKeywords: "infix infixl infixr", end: "\$", contains: [
-        C_NUMBER_MODE,
+        cNumberMode,
         Mode(ref: '~contains~0~contains~0~contains~4')
       ]),
       Mode(
@@ -107,7 +107,7 @@ final haskell = Mode(
               "foreign import export ccall stdcall cplusplus jvm dotnet safe unsafe",
           contains: [
             Mode(ref: '~contains~2~contains~0'),
-            QUOTE_STRING_MODE,
+            quoteStringMode,
             Mode(ref: '~contains~0~contains~0~contains~4')
           ]),
       Mode(
@@ -116,8 +116,8 @@ final haskell = Mode(
           end: "\$"),
       Mode(ref: '~contains~0~contains~0~contains~0'),
       Mode(ref: '~contains~0~contains~0~contains~1'),
-      QUOTE_STRING_MODE,
-      C_NUMBER_MODE,
+      quoteStringMode,
+      cNumberMode,
       Mode(ref: '~contains~2~contains~0'),
       Mode(className: "title", begin: "^[_a-z][\\w']*", relevance: 0),
       Mode(ref: '~contains~0~contains~0~contains~4'),

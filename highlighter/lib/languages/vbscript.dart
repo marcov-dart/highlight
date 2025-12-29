@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final vbscript = Mode(
     refs: {},
     aliases: ["vbs"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "call class const dim do loop erase execute executeglobal exit for each next function if then else on error option explicit new private property let get public randomize redim rem select case set stop sub while wend with end to elseif is or xor and not class_initialize class_terminate default preserve in me byval byref step resume goto",
@@ -27,12 +27,12 @@ final vbscript = Mode(
           begin: "'",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_NUMBER_MODE
+      cNumberMode
     ]);

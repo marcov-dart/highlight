@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final dust = Mode(
     refs: {},
     aliases: ["dst"],
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: ["xml"],
     contains: [
       Mode(
@@ -21,7 +21,7 @@ final dust = Mode(
                 starts: Mode(
                     endsWithParent: true,
                     relevance: 0,
-                    contains: [QUOTE_STRING_MODE]))
+                    contains: [quoteStringMode]))
           ]),
       Mode(
           className: "template-variable",

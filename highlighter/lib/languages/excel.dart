@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final excel = Mode(
     refs: {},
     aliases: ["xlsx", "xls"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[a-zA-Z][\\w\\.]*",
     keywords: {
       "built_in":
@@ -29,15 +29,15 @@ final excel = Mode(
           className: "symbol",
           begin: "[A-Z]{0,2}\\d*:[A-Z]{0,2}\\d*",
           relevance: 0),
-      BACKSLASH_ESCAPE,
-      QUOTE_STRING_MODE,
+      cBackslashEscape,
+      quoteStringMode,
       Mode(className: "number", begin: "\\b\\d+(\\.\\d+)?(%)?", relevance: 0),
       Mode(
           className: "comment",
           begin: "\\bN\\(",
           end: "\\)",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

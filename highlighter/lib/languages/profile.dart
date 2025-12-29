@@ -4,7 +4,7 @@ import '../src/mode.dart';
 import '../src/common_modes.dart';
 
 final profile = Mode(refs: {}, contains: [
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(
       begin: "[a-zA-Z_][\\da-zA-Z_]+\\.[\\da-zA-Z_]{1,3}",
       end: ":",
@@ -17,10 +17,10 @@ final profile = Mode(refs: {}, contains: [
   Mode(
       begin: "function calls",
       end: "\$",
-      contains: [C_NUMBER_MODE],
+      contains: [cNumberMode],
       relevance: 10),
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
+  aposStringMode,
+  quoteStringMode,
   Mode(
       className: "string",
       begin: "\\(",

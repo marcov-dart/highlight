@@ -10,15 +10,15 @@ final stylus = Mode(
       '~contains~10': Mode(className: "variable", begin: "\\\$[a-zA-Z]\\w*"),
     },
     aliases: ["styl"],
-    case_insensitive: false,
+    caseInsensitive: false,
     keywords: "if else for in",
     illegal:
         "(\\?|(\\bReturn\\b)|(\\bEnd\\b)|(\\bend\\b)|(\\bdef\\b)|;|#\\s|\\*\\s|===\\s|\\||%)",
     contains: [
-      QUOTE_STRING_MODE,
-      APOS_STRING_MODE,
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      quoteStringMode,
+      aposStringMode,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~4'),
       Mode(
           begin: "\\.[a-zA-Z][a-zA-Z0-9_-]*(?=[\\.\\s\\n\\[\\:,])",
@@ -37,8 +37,8 @@ final stylus = Mode(
           begin:
               "@(charset|css|debug|extend|font-face|for|import|include|media|mixin|page|warn|while)\\b"),
       Mode(ref: '~contains~10'),
-      CSS_NUMBER_MODE,
-      NUMBER_MODE,
+      cssNumberMode,
+      numberMode,
       Mode(
           className: "function",
           begin: "^[a-zA-Z][a-zA-Z0-9_-]*\\(.*\\)",
@@ -49,10 +49,10 @@ final stylus = Mode(
             Mode(className: "params", begin: "\\(", end: "\\)", contains: [
               Mode(ref: '~contains~4'),
               Mode(ref: '~contains~10'),
-              APOS_STRING_MODE,
-              CSS_NUMBER_MODE,
-              NUMBER_MODE,
-              QUOTE_STRING_MODE
+              aposStringMode,
+              cssNumberMode,
+              numberMode,
+              quoteStringMode
             ])
           ]),
       Mode(
@@ -64,11 +64,11 @@ final stylus = Mode(
               contains: [
                 Mode(ref: '~contains~4'),
                 Mode(ref: '~contains~10'),
-                APOS_STRING_MODE,
-                QUOTE_STRING_MODE,
-                CSS_NUMBER_MODE,
-                NUMBER_MODE,
-                C_BLOCK_COMMENT_MODE
+                aposStringMode,
+                quoteStringMode,
+                cssNumberMode,
+                numberMode,
+                cBlockCommentMode
               ],
               illegal: "\\.",
               relevance: 0))

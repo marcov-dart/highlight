@@ -12,7 +12,7 @@ final smali = Mode(refs: {}, aliases: [
       begin: "#",
       end: "\$",
       contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

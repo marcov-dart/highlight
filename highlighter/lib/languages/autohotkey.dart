@@ -7,7 +7,7 @@ final autohotkey = Mode(
     refs: {
       '~contains~0': Mode(begin: "`[\\s\\S]"),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["ahk"],
     keywords: {
       "keyword":
@@ -28,14 +28,14 @@ final autohotkey = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_BLOCK_COMMENT_MODE,
+      cBlockCommentMode,
       Mode(className: "number", begin: "\\b\\d+(\\.\\d+)?", relevance: 0),
       Mode(className: "variable", begin: "%[a-zA-Z0-9#_\$@]+%"),
       Mode(className: "built_in", begin: "^\\s*\\w+\\s*(,|%)"),

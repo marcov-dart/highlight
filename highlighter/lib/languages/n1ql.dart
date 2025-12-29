@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final n1Ql = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
       Mode(
           beginKeywords:
@@ -24,22 +24,22 @@ final n1Ql = Mode(
                 className: "string",
                 begin: "'",
                 end: "'",
-                contains: [BACKSLASH_ESCAPE],
+                contains: [cBackslashEscape],
                 relevance: 0),
             Mode(
                 className: "string",
                 begin: "\"",
                 end: "\"",
-                contains: [BACKSLASH_ESCAPE],
+                contains: [cBackslashEscape],
                 relevance: 0),
             Mode(
                 className: "symbol",
                 begin: "`",
                 end: "`",
-                contains: [BACKSLASH_ESCAPE],
+                contains: [cBackslashEscape],
                 relevance: 2),
-            C_NUMBER_MODE,
-            C_BLOCK_COMMENT_MODE
+            cNumberMode,
+            cBlockCommentMode
           ]),
-      C_BLOCK_COMMENT_MODE
+      cBlockCommentMode
     ]);

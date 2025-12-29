@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final yaml = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["yml", "YAML", "yaml"],
     contains: [
       Mode(className: "attr", variants: [
@@ -29,7 +29,7 @@ final yaml = Mode(
       Mode(className: "meta", begin: "&[a-zA-Z_]\\w*\$"),
       Mode(className: "meta", begin: "\\*[a-zA-Z_]\\w*\$"),
       Mode(className: "bullet", begin: "\\-(?=[ ]|\$)", relevance: 0),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(
           beginKeywords: "true false yes no null",
           keywords: {"literal": "true false yes no null"}),
@@ -42,7 +42,7 @@ final yaml = Mode(
         Mode(begin: "\"", end: "\""),
         Mode(begin: "\\S+")
       ], contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(className: "template-variable", variants: [
           Mode(begin: "{{", end: "}}"),
           Mode(begin: "%{", end: "}")

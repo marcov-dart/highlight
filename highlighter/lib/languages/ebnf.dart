@@ -7,7 +7,7 @@ final ebnf = Mode(
     refs: {
       '~contains~0':
           Mode(className: "comment", begin: "\\(\\*", end: "\\*\\)", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -24,8 +24,8 @@ final ebnf = Mode(
         Mode(ref: '~contains~0'),
         Mode(className: "meta", begin: "\\?.*\\?"),
         Mode(className: "string", variants: [
-          APOS_STRING_MODE,
-          QUOTE_STRING_MODE,
+          aposStringMode,
+          quoteStringMode,
           Mode(begin: "`", end: "`")
         ])
       ])

@@ -36,9 +36,9 @@ final moonscript = Mode(
       '~contains~1~variants~1~contains~1~contains~2':
           Mode(className: "built_in", begin: "@__[a-zA-Z]\\w*"),
       '~contains~1': Mode(className: "string", variants: [
-        Mode(begin: "'", end: "'", contains: [BACKSLASH_ESCAPE]),
+        Mode(begin: "'", end: "'", contains: [cBackslashEscape]),
         Mode(begin: "\"", end: "\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(className: "subst", begin: "#\\{", end: "}", keywords: {
             "keyword":
                 "if then not for in while do return else elseif break continue switch and or unless when class extends super local import export from using",
@@ -77,7 +77,7 @@ final moonscript = Mode(
       Mode(ref: '~contains~1~variants~1~contains~1~contains~3'),
       Mode(ref: '~contains~1~variants~1~contains~1~contains~4'),
       Mode(className: "comment", begin: "--", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

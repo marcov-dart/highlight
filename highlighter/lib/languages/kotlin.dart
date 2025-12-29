@@ -13,12 +13,12 @@ final kotlin = Mode(refs: {
   ]),
   '~contains~6~contains~0~contains~0~variants~0~contains~1~contains~1~variants~2':
       Mode(begin: "\"", end: "\"", illegal: "\\n", contains: [
-    BACKSLASH_ESCAPE,
+    cBackslashEscape,
     Mode(ref: '~contains~6~contains~0~contains~0~variants~0~contains~0'),
     Mode(ref: '~contains~6~contains~0~contains~0~variants~0~contains~1')
   ]),
   '~contains~6~contains~0~contains~0~variants~0~contains~1~contains~1~variants~1':
-      Mode(begin: "'", end: "'", illegal: "\\n", contains: [BACKSLASH_ESCAPE]),
+      Mode(begin: "'", end: "'", illegal: "\\n", contains: [cBackslashEscape]),
   '~contains~6~contains~0~contains~0~variants~0~contains~1~contains~1':
       Mode(className: "string", variants: [
     Mode(ref: '~contains~6~contains~0~contains~0~variants~0'),
@@ -31,7 +31,7 @@ final kotlin = Mode(refs: {
   ]),
   '~contains~6~contains~0~contains~0~variants~0~contains~1':
       Mode(className: "subst", begin: "\\\${", end: "}", contains: [
-    C_NUMBER_MODE,
+    cNumberMode,
     Mode(
         ref:
             '~contains~6~contains~0~contains~0~variants~0~contains~1~contains~1')
@@ -62,8 +62,8 @@ final kotlin = Mode(refs: {
           "@(?:file|property|field|get|set|receiver|param|setparam|delegate)\\s*:(?:\\s*[a-zA-Z_]\\w*)?"),
   '~contains~2':
       Mode(className: "comment", begin: "/\\*", end: "\\*/", contains: [
-    C_BLOCK_COMMENT_MODE,
-    PHRASAL_WORDS_MODE,
+    cBlockCommentMode,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -83,14 +83,14 @@ final kotlin = Mode(refs: {
       end: "\\*/",
       contains: [
         Mode(className: "doctag", begin: "@[A-Za-z]+"),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ],
       relevance: 0),
-  C_LINE_COMMENT_MODE,
+  cLimeCommentMode,
   Mode(ref: '~contains~2'),
   Mode(
       className: "keyword",
@@ -119,7 +119,7 @@ final kotlin = Mode(refs: {
             begin: "[a-zA-Z_]\\w*\\s*\\(",
             returnBegin: true,
             relevance: 0,
-            contains: [UNDERSCORE_TITLE_MODE]),
+            contains: [underscopeTitleMode]),
         Mode(
             className: "type",
             begin: "<",
@@ -146,18 +146,18 @@ final kotlin = Mode(refs: {
                   endsWithParent: true,
                   contains: [
                     Mode(ref: '~contains~7~contains~2~contains~0~contains~0'),
-                    C_LINE_COMMENT_MODE,
+                    cLimeCommentMode,
                     Mode(ref: '~contains~2')
                   ],
                   relevance: 0),
-              C_LINE_COMMENT_MODE,
+              cLimeCommentMode,
               Mode(ref: '~contains~2'),
               Mode(ref: '~contains~5'),
               Mode(ref: '~contains~6'),
               Mode(
                   ref:
                       '~contains~6~contains~0~contains~0~variants~0~contains~1~contains~1'),
-              C_NUMBER_MODE
+              cNumberMode
             ]),
         Mode(ref: '~contains~2')
       ]),
@@ -169,7 +169,7 @@ final kotlin = Mode(refs: {
       illegal: "extends implements",
       contains: [
         Mode(beginKeywords: "public protected internal private constructor"),
-        UNDERSCORE_TITLE_MODE,
+        underscopeTitleMode,
         Mode(
             className: "type",
             begin: "<",

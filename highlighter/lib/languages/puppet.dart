@@ -6,12 +6,12 @@ import '../src/common_modes.dart';
 final puppet = Mode(refs: {
   '~contains~2': Mode(
       className: "string",
-      contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~1')],
+      contains: [cBackslashEscape, Mode(ref: '~contains~1')],
       variants: [Mode(begin: "'", end: "'"), Mode(begin: "\"", end: "\"")]),
   '~contains~1':
       Mode(className: "variable", begin: "\\\$([A-Za-z_]|::)(\\w|::)*"),
   '~contains~0': Mode(className: "comment", begin: "#", end: "\$", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

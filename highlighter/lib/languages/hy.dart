@@ -34,7 +34,7 @@ final hy = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -43,7 +43,7 @@ final hy = Mode(
           relevance: 0),
       '~contains~1~contains~1~starts~contains~3':
           Mode(className: "comment", begin: "\\^\\{", end: "\\}", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -57,7 +57,7 @@ final hy = Mode(
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~1~contains~1~starts':
           Mode(endsWithParent: true, relevance: 0, contains: [
         Mode(ref: '~contains~1'),
@@ -73,7 +73,7 @@ final hy = Mode(
       ]),
       '~contains~1': Mode(begin: "\\(", end: "\\)", contains: [
         Mode(className: "comment", begin: "comment", end: "", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

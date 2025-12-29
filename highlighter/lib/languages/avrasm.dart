@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final avrasm = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "\\.?[a-zA-Z]\\w*",
     keywords: {
       "keyword":
@@ -16,23 +16,23 @@ final avrasm = Mode(
           ".byte .cseg .db .def .device .dseg .dw .endmacro .equ .eseg .exit .include .list .listmac .macro .nolist .org .set"
     },
     contains: [
-      C_BLOCK_COMMENT_MODE,
+      cBlockCommentMode,
       Mode(
           className: "comment",
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_NUMBER_MODE,
-      BINARY_NUMBER_MODE,
+      cNumberMode,
+      binaryNumverMode,
       Mode(className: "number", begin: "\\b(\\\$[a-zA-Z0-9]+|0o[0-7]+)"),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(
           className: "string",
           begin: "'",

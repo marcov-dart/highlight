@@ -21,7 +21,7 @@ final matlab = Mode(
           beginKeywords: "function",
           end: "\$",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", variants: [
               Mode(begin: "\\(", end: "\\)"),
               Mode(begin: "\\[", end: "\\]")
@@ -43,7 +43,7 @@ final matlab = Mode(
           className: "string",
           begin: "'",
           end: "'",
-          contains: [BACKSLASH_ESCAPE, Mode(begin: "''")]),
+          contains: [cBackslashEscape, Mode(begin: "''")]),
       Mode(
           begin: "\\]|}|\\)",
           relevance: 0,
@@ -52,21 +52,21 @@ final matlab = Mode(
           className: "string",
           begin: "\"",
           end: "\"",
-          contains: [BACKSLASH_ESCAPE, Mode(begin: "\"\"")],
+          contains: [cBackslashEscape, Mode(begin: "\"\"")],
           starts: Mode(ref: '~contains~1~starts')),
       Mode(
           className: "comment",
           begin: "^\\s*\\%\\{\\s*\$",
           end: "^\\s*\\%\\}\\s*\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ]),
       Mode(className: "comment", begin: "\\%", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

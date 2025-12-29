@@ -12,16 +12,16 @@ final smalltalk = Mode(
     keywords: "self super nil true false thisContext",
     contains: [
       Mode(className: "comment", begin: "\"", end: "\"", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      APOS_STRING_MODE,
+      aposStringMode,
       Mode(className: "type", begin: "\\b[A-Z][A-Za-z0-9_]*", relevance: 0),
       Mode(begin: "[a-z][a-zA-Z0-9_]*:", relevance: 0),
-      C_NUMBER_MODE,
+      cNumberMode,
       Mode(ref: '~contains~5'),
       Mode(ref: '~contains~6'),
       Mode(
@@ -31,9 +31,9 @@ final smalltalk = Mode(
           illegal: "\\S",
           contains: [Mode(begin: "(\\|[ ]*)?[a-z][a-zA-Z0-9_]*")]),
       Mode(begin: "\\#\\(", end: "\\)", contains: [
-        APOS_STRING_MODE,
+        aposStringMode,
         Mode(ref: '~contains~6'),
-        C_NUMBER_MODE,
+        cNumberMode,
         Mode(ref: '~contains~5')
       ])
     ]);

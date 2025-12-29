@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final haml = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
       Mode(
           className: "meta",
@@ -17,7 +17,7 @@ final haml = Mode(
           begin: "^\\s*(!=#|=#|-#|/).*\$",
           end: "false",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -39,8 +39,8 @@ final haml = Mode(
               endsWithParent: true,
               contains: [
                 Mode(className: "attr", begin: ":\\w+"),
-                APOS_STRING_MODE,
-                QUOTE_STRING_MODE,
+                aposStringMode,
+                quoteStringMode,
                 Mode(begin: "\\w+", relevance: 0)
               ])
         ]),
@@ -52,8 +52,8 @@ final haml = Mode(
               endsWithParent: true,
               contains: [
                 Mode(className: "attr", begin: "\\w+", relevance: 0),
-                APOS_STRING_MODE,
-                QUOTE_STRING_MODE,
+                aposStringMode,
+                quoteStringMode,
                 Mode(begin: "\\w+", relevance: 0)
               ])
         ])

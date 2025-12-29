@@ -50,7 +50,7 @@ final elixir = Mode(
           contains: [
             Mode(endsParent: true, contains: [
               Mode(contains: [
-                BACKSLASH_ESCAPE,
+                cBackslashEscape,
                 Mode(ref: '~contains~0~contains~1')
               ], variants: [
                 Mode(begin: "\"", end: "\""),
@@ -68,9 +68,9 @@ final elixir = Mode(
           begin:
               "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e)\\s*",
           contains: [
-            HASH_COMMENT_MODE,
+            hashCommentMode,
             Mode(className: "regexp", illegal: "\\n", contains: [
-              BACKSLASH_ESCAPE,
+              cBackslashEscape,
               Mode(ref: '~contains~0~contains~1')
             ], variants: [
               Mode(begin: "/", end: "/[a-z]*"),
@@ -105,7 +105,7 @@ final elixir = Mode(
             Mode(ref: '~contains~0'),
             Mode(ref: '~contains~0~contains~1~contains~1'),
             Mode(ref: '~contains~0~contains~1~contains~2'),
-            HASH_COMMENT_MODE,
+            hashCommentMode,
             Mode(ref: '~contains~0~contains~1~contains~4'),
             Mode(ref: '~contains~0~contains~1~contains~5'),
             Mode(ref: '~contains~0~contains~1~contains~6'),
@@ -117,7 +117,7 @@ final elixir = Mode(
             Mode(ref: '~contains~0~contains~1~contains~12')
           ]),
       '~contains~0': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~0~contains~1')
       ], variants: [
         Mode(begin: "\"\"\"", end: "\"\"\""),
@@ -137,7 +137,7 @@ final elixir = Mode(
       Mode(ref: '~contains~0'),
       Mode(ref: '~contains~0~contains~1~contains~1'),
       Mode(ref: '~contains~0~contains~1~contains~2'),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(ref: '~contains~0~contains~1~contains~4'),
       Mode(ref: '~contains~0~contains~1~contains~5'),
       Mode(ref: '~contains~0~contains~1~contains~6'),

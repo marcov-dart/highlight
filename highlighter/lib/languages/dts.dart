@@ -8,13 +8,13 @@ final dts = Mode(
       '~contains~0~contains~8~variants~2':
           Mode(begin: "'\\\\?.", end: "'", illegal: "."),
       '~contains~0~contains~8~variants~1':
-          Mode(begin: "(u8?|U)?R\"", end: "\"", contains: [BACKSLASH_ESCAPE]),
+          Mode(begin: "(u8?|U)?R\"", end: "\"", contains: [cBackslashEscape]),
       '~contains~0~contains~8~variants~0': Mode(
           className: "string",
           begin: "((u8?|U)|L)?\"",
           end: "\"",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~0~contains~8': Mode(className: "string", variants: [
         Mode(ref: '~contains~0~contains~8~variants~0'),
         Mode(ref: '~contains~0~contains~8~variants~1'),
@@ -60,8 +60,8 @@ final dts = Mode(
             Mode(ref: '~contains~0~contains~2'),
             Mode(ref: '~contains~0~contains~3'),
             Mode(ref: '~contains~0~contains~4'),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~0~contains~4~contains~0'),
             Mode(ref: '~contains~0~contains~8')
           ]),
@@ -70,8 +70,8 @@ final dts = Mode(
       Mode(ref: '~contains~0~contains~2'),
       Mode(ref: '~contains~0~contains~3'),
       Mode(ref: '~contains~0~contains~4'),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~0~contains~4~contains~0'),
       Mode(ref: '~contains~0~contains~8'),
       Mode(className: "meta", begin: "#", end: "\$", keywords: {
@@ -89,8 +89,8 @@ final dts = Mode(
           Mode(className: "meta-string", begin: "<", end: ">", illegal: "\\n")
         ]),
         Mode(ref: '~contains~0~contains~8'),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE
+        cLimeCommentMode,
+        cBlockCommentMode
       ]),
       Mode(begin: "[a-zA-Z]\\w*::", keywords: "")
     ]);

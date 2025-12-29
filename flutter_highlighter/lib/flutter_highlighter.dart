@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:highlighter/highlighter.dart' show highlight, Node;
 
 /// Highlight Flutter Widget
 class HighlightView extends StatelessWidget {
   /// The original code to be highlighted
   final String source;
-  
+
   final Color? backgroundColor;
 
   /// Highlight language
@@ -31,13 +30,15 @@ class HighlightView extends StatelessWidget {
 
   HighlightView(
     String input, {
+    Key? key,
     this.backgroundColor,
     this.language,
     this.theme = const {},
     this.padding,
     this.textStyle,
     int tabSize = 8, // TODO: https://github.com/flutter/flutter/issues/50087
-  }) : source = input.replaceAll('\t', ' ' * tabSize);
+  })  : source = input.replaceAll('\t', ' ' * tabSize),
+        super(key: key);
 
   List<TextSpan> _convert(List<Node> nodes) {
     List<TextSpan> spans = [];
@@ -56,12 +57,12 @@ class HighlightView extends StatelessWidget {
         stack.add(currentSpans);
         currentSpans = tmp;
 
-        node.children!.forEach((n) {
+        for (var n in node.children!) {
           _traverse(n);
           if (n == node.children!.last) {
             currentSpans = stack.isEmpty ? spans : stack.removeLast();
           }
-        });
+        }
       }
     }
 
@@ -80,6 +81,7 @@ class HighlightView extends StatelessWidget {
   // See: https://github.com/flutter/flutter/issues/39998
   // So we just use monospace here for now
   static const _defaultFontFamily = 'monospace';
+
   @override
   Widget build(BuildContext context) {
     var _textStyle = TextStyle(
@@ -91,7 +93,9 @@ class HighlightView extends StatelessWidget {
     }
 
     return Container(
-      color: backgroundColor ?? theme[_rootKey]?.backgroundColor ?? _defaultBackgroundColor,
+      color: backgroundColor ??
+          theme[_rootKey]?.backgroundColor ??
+          _defaultBackgroundColor,
       padding: padding,
       child: SelectableText.rich(
         TextSpan(

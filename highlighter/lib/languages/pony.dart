@@ -15,12 +15,12 @@ final pony = Mode(refs: {}, keywords: {
       className: "string",
       begin: "\"",
       end: "\"",
-      contains: [BACKSLASH_ESCAPE]),
+      contains: [cBackslashEscape]),
   Mode(
       className: "string",
       begin: "'",
       end: "'",
-      contains: [BACKSLASH_ESCAPE],
+      contains: [cBackslashEscape],
       relevance: 0),
   Mode(begin: "[a-zA-Z]\\w*'", relevance: 0),
   Mode(
@@ -28,6 +28,6 @@ final pony = Mode(refs: {}, keywords: {
       begin:
           "(-?)(\\b0[xX][a-fA-F0-9]+|\\b0[bB][01]+|(\\b\\d+(_\\d+)?(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)",
       relevance: 0),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE
+  cLimeCommentMode,
+  cBlockCommentMode
 ]);

@@ -14,7 +14,7 @@ final brainfuck = Mode(refs: {
       begin: "[^\\[\\]\\.,\\+\\-<> \r\n]",
       end: "[\\[\\]\\.,\\+\\-<> \r\n]",
       contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

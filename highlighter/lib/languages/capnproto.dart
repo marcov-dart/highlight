@@ -12,9 +12,9 @@ final capnproto = Mode(refs: {}, aliases: [
       "Void Bool Int8 Int16 Int32 Int64 UInt8 UInt16 UInt32 UInt64 Float32 Float64 Text Data AnyPointer AnyStruct Capability List",
   "literal": "true false"
 }, contains: [
-  QUOTE_STRING_MODE,
-  NUMBER_MODE,
-  HASH_COMMENT_MODE,
+  quoteStringMode,
+  numberMode,
+  hashCommentMode,
   Mode(className: "meta", begin: "@0x[\\w\\d]{16};", illegal: "\\n"),
   Mode(className: "symbol", begin: "@\\d+\\b"),
   Mode(

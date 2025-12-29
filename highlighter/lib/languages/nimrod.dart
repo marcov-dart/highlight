@@ -19,7 +19,7 @@ final nimrod = Mode(refs: {}, aliases: [
       end: "\"",
       contains: [Mode(begin: "\"\"")]),
   Mode(className: "string", begin: "([a-zA-Z]\\w*)?\"\"\"", end: "\"\"\""),
-  QUOTE_STRING_MODE,
+  quoteStringMode,
   Mode(className: "type", begin: "\\b[A-Z]\\w+\\b", relevance: 0),
   Mode(className: "number", relevance: 0, variants: [
     Mode(begin: "\\b(0[xX][0-9a-fA-F][_0-9a-fA-F]*)('?[iIuU](8|16|32|64))?"),
@@ -27,5 +27,5 @@ final nimrod = Mode(refs: {}, aliases: [
     Mode(begin: "\\b(0(b|B)[01][_01]*)('?[iIuUfF](8|16|32|64))?"),
     Mode(begin: "\\b(\\d[_\\d]*)('?[iIuUfF](8|16|32|64))?")
   ]),
-  HASH_COMMENT_MODE
+  hashCommentMode
 ]);

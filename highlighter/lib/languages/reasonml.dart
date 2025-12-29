@@ -18,7 +18,7 @@ final reasonml = Mode(
             "literal": "true false"
           },
           contains: [
-            QUOTE_STRING_MODE,
+            quoteStringMode,
             Mode(ref: '~contains~4~contains~1'),
             Mode(className: "params", begin: "\\b\\x7e?[a-z\$_][0-9a-zA-Z\$_]*")
           ]),
@@ -74,7 +74,7 @@ final reasonml = Mode(
                     contains: [
                       Mode(ref: '~contains~11'),
                       Mode(begin: "\\(", end: "\\)", skip: true),
-                      QUOTE_STRING_MODE,
+                      quoteStringMode,
                       Mode(ref: '~contains~4~contains~1'),
                       Mode(
                           ref:
@@ -84,7 +84,7 @@ final reasonml = Mode(
                 Mode(begin: "\\b(`?[A-Z\$_][0-9a-zA-Z\$_]*\\.)+{", end: "}")
               ],
               contains: [
-                QUOTE_STRING_MODE,
+                quoteStringMode,
                 Mode(ref: '~contains~4~contains~1'),
                 Mode(
                     ref:
@@ -169,7 +169,7 @@ final reasonml = Mode(
           begin: "/\\*",
           end: "\\*/",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -181,7 +181,7 @@ final reasonml = Mode(
           begin: "'(\\\\[^']+|[^'])'",
           illegal: "\\n",
           relevance: 0),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(className: "literal", begin: "\\(\\)", relevance: 0),
       Mode(
           className: "literal",
@@ -211,7 +211,7 @@ final reasonml = Mode(
           illegal: "\\-\\->",
           relevance: 0),
       Mode(ref: '~contains~4~contains~2'),
-      C_LINE_COMMENT_MODE,
+      cLimeCommentMode,
       Mode(
           className: "pattern-match",
           begin: "\\|",
@@ -254,7 +254,7 @@ final reasonml = Mode(
                 relevance: 0,
                 begin: "`?[A-Z\$_][0-9a-zA-Z\$_]*"),
             Mode(begin: "{", end: "}", skip: true),
-            QUOTE_STRING_MODE,
+            quoteStringMode,
             Mode(ref: '~contains~4~contains~1'),
             Mode(
                 ref:

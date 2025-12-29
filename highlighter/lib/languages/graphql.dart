@@ -10,9 +10,9 @@ final graphql = Mode(refs: {}, aliases: [
       "query mutation subscription|10 type interface union scalar fragment|10 enum on ...",
   "literal": "true false null"
 }, contains: [
-  HASH_COMMENT_MODE,
-  QUOTE_STRING_MODE,
-  NUMBER_MODE,
+  hashCommentMode,
+  quoteStringMode,
+  numberMode,
   Mode(
       className: "type",
       begin: "[^\\w][A-Z][a-z]",

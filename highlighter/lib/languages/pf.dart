@@ -14,9 +14,9 @@ final pf = Mode(
       "literal": "all any no-route self urpf-failed egress|5 unknown"
     },
     contains: [
-      HASH_COMMENT_MODE,
-      NUMBER_MODE,
-      QUOTE_STRING_MODE,
+      hashCommentMode,
+      numberMode,
+      quoteStringMode,
       Mode(className: "variable", begin: "\\\$[\\w\\d#@][\\w\\d_]*"),
       Mode(className: "variable", begin: "<(?!\\/)", end: ">")
     ]);

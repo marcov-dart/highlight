@@ -13,11 +13,11 @@ final rsl = Mode(
     },
     illegal: "</",
     contains: [
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      QUOTE_STRING_MODE,
-      APOS_STRING_MODE,
-      C_NUMBER_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      quoteStringMode,
+      aposStringMode,
+      cNumberMode,
       Mode(className: "meta", begin: "#", end: "\$"),
       Mode(
           className: "class",

@@ -6,13 +6,13 @@ import '../src/common_modes.dart';
 final dockerfile = Mode(
     refs: {},
     aliases: ["docker"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: "from maintainer expose env arg user onbuild stopsignal",
     contains: [
-      HASH_COMMENT_MODE,
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
-      NUMBER_MODE,
+      hashCommentMode,
+      aposStringMode,
+      quoteStringMode,
+      numberMode,
       Mode(
           beginKeywords:
               "run cmd entrypoint volume add copy workdir label healthcheck shell",

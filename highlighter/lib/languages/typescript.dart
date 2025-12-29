@@ -18,12 +18,12 @@ final typescript = Mode(refs: {
       className: "string",
       begin: "`",
       end: "`",
-      contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~3~starts~contains~1')]),
+      contains: [cBackslashEscape, Mode(ref: '~contains~3~starts~contains~1')]),
   '~contains~3~starts~contains~1~contains~3': Mode(
       begin: "css`",
       end: "",
       starts: Mode(end: "`", returnEnd: false, contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~3~starts~contains~1')
       ], subLanguage: [
         "css"
@@ -36,19 +36,19 @@ final typescript = Mode(refs: {
     "built_in":
         "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document any number boolean string void Promise"
   }, contains: [
-    APOS_STRING_MODE,
-    QUOTE_STRING_MODE,
+    aposStringMode,
+    quoteStringMode,
     Mode(ref: '~contains~3'),
     Mode(ref: '~contains~3~starts~contains~1~contains~3'),
     Mode(ref: '~contains~3~starts~contains~1~contains~4'),
     Mode(ref: '~contains~3~starts~contains~1~contains~5'),
-    REGEXP_MODE
+    regExpMode
   ]),
   '~contains~3': Mode(
       begin: "html`",
       end: "",
       starts: Mode(end: "`", returnEnd: false, contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~3~starts~contains~1')
       ], subLanguage: [
         "xml"
@@ -62,9 +62,9 @@ final typescript = Mode(refs: {
         "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document any number boolean string void Promise"
   }, contains: [
     Mode(self: true),
-    QUOTE_STRING_MODE,
-    APOS_STRING_MODE,
-    NUMBER_MODE
+    quoteStringMode,
+    aposStringMode,
+    numberMode
   ]),
   '~contains~10~contains~2~contains~2':
       Mode(className: "meta", begin: "@[A-Za-z\$_][0-9A-Za-z\$_]*"),
@@ -82,8 +82,8 @@ final typescript = Mode(refs: {
             "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document any number boolean string void Promise"
       },
       contains: [
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
         Mode(ref: '~contains~10~contains~2~contains~2'),
         Mode(ref: '~contains~10~contains~2~contains~3')
       ]),
@@ -97,22 +97,22 @@ final typescript = Mode(refs: {
       "eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document any number boolean string void Promise"
 }, contains: [
   Mode(className: "meta", begin: "^\\s*['\"]use strict['\"]"),
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
+  aposStringMode,
+  quoteStringMode,
   Mode(ref: '~contains~3'),
   Mode(ref: '~contains~3~starts~contains~1~contains~3'),
   Mode(ref: '~contains~3~starts~contains~1~contains~4'),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(ref: '~contains~3~starts~contains~1~contains~5'),
   Mode(
       begin:
           "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(case|return|throw)\\b)\\s*",
       keywords: "return throw case",
       contains: [
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        REGEXP_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
+        regExpMode,
         Mode(
             className: "function",
             begin: "(\\(.*?\\)|[a-zA-Z]\\w*)\\s*=>",
@@ -136,8 +136,8 @@ final typescript = Mode(refs: {
                     },
                     contains: [
                       Mode(self: true),
-                      C_LINE_COMMENT_MODE,
-                      C_BLOCK_COMMENT_MODE
+                      cLimeCommentMode,
+                      cBlockCommentMode
                     ])
               ])
             ])

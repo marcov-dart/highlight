@@ -20,17 +20,17 @@ final objectivec = Mode(
           className: "built_in",
           begin:
               "\\b(AV|CA|CF|CG|CI|CL|CM|CN|CT|MK|MP|MTK|MTL|NS|SCN|SK|UI|WK|XC)\\w+"),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      C_NUMBER_MODE,
-      QUOTE_STRING_MODE,
-      APOS_STRING_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      cNumberMode,
+      quoteStringMode,
+      aposStringMode,
       Mode(className: "string", variants: [
         Mode(
             begin: "@\"",
             end: "\"",
             illegal: "\\n",
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
       Mode(className: "meta", begin: "#\\s*[a-z]+\\b", end: "\$", keywords: {
         "meta-keyword":
@@ -42,14 +42,14 @@ final objectivec = Mode(
             begin: "\"",
             end: "\"",
             illegal: "\\n",
-            contains: [BACKSLASH_ESCAPE]),
+            contains: [cBackslashEscape]),
         Mode(
             className: "meta-string",
             begin: "<.*?>",
             end: "\$",
             illegal: "\\n"),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE
+        cLimeCommentMode,
+        cBlockCommentMode
       ]),
       Mode(
           className: "class",
@@ -58,6 +58,6 @@ final objectivec = Mode(
           excludeEnd: true,
           keywords: "@interface @class @protocol @implementation",
           lexemes: "[a-zA-Z@][a-zA-Z0-9_]*",
-          contains: [UNDERSCORE_TITLE_MODE]),
+          contains: [underscopeTitleMode]),
       Mode(begin: "\\.[a-zA-Z_]\\w*", relevance: 0)
     ]);

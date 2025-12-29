@@ -25,21 +25,21 @@ final mercury = Mode(refs: {}, aliases: [
       className: "built_in",
       variants: [Mode(begin: ":-\\|-->"), Mode(begin: "=", relevance: 0)]),
   Mode(className: "comment", begin: "%", end: "\$", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
         relevance: 0)
   ]),
-  C_BLOCK_COMMENT_MODE,
+  cBlockCommentMode,
   Mode(className: "number", begin: "0'.\\|0[box][0-9a-fA-F]*"),
-  NUMBER_MODE,
+  numberMode,
   Mode(
       className: "string",
       begin: "'",
       end: "'",
       illegal: "\\n",
-      contains: [BACKSLASH_ESCAPE],
+      contains: [cBackslashEscape],
       relevance: 0),
   Mode(
       className: "string",
@@ -47,7 +47,7 @@ final mercury = Mode(refs: {}, aliases: [
       end: "\"",
       illegal: "\\n",
       contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(
             className: "subst",
             begin:

@@ -12,17 +12,17 @@ final routeros = Mode(
       ]),
       '~contains~2':
           Mode(className: "string", begin: "\"", end: "\"", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~2~contains~1'),
         Mode(
             className: "variable",
             begin: "\\\$\\(",
             end: "\\)",
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
     },
     aliases: ["routeros", "mikrotik"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: ":?[\\w-]+",
     keywords: {
       "literal": "true false yes no nothing nil null",
@@ -43,7 +43,7 @@ final routeros = Mode(
         Mode(begin: "^1\\.\\.(\\d+)\$", end: "\$")
       ], illegal: "."),
       Mode(className: "comment", begin: "^#", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

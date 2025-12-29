@@ -27,13 +27,13 @@ final xml = Mode(
           begin: "'",
           end: "'",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~0~contains~1': Mode(
           className: "meta-string",
           begin: "\"",
           end: "\"",
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~0~contains~0~contains~0': Mode(
           className: "meta-keyword",
           begin: "#?[a-z_][a-z1-9_-]+",
@@ -54,7 +54,7 @@ final xml = Mode(
       "wsf",
       "svg"
     ],
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
       Mode(
           className: "meta",
@@ -80,7 +80,7 @@ final xml = Mode(
           begin: "<!--",
           end: "-->",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

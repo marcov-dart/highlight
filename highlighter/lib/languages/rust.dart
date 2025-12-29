@@ -16,10 +16,10 @@ final rust = Mode(
     lexemes: "[a-zA-Z]\\w*!?",
     illegal: "</",
     contains: [
-      C_LINE_COMMENT_MODE,
+      cLimeCommentMode,
       Mode(className: "comment", begin: "/\\*", end: "\\*/", contains: [
         Mode(self: true),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -30,7 +30,7 @@ final rust = Mode(
           begin: "b?\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       Mode(className: "string", variants: [
         Mode(begin: "r(#*)\"(.|\\n)*?\"\\1(?!#)"),
         Mode(begin: "b?'\\\\?(x\\w{2}|u\\w{4}|U\\w{8}|.)'")
@@ -54,7 +54,7 @@ final rust = Mode(
           beginKeywords: "fn",
           end: "(\\(|<)",
           excludeEnd: true,
-          contains: [UNDERSCORE_TITLE_MODE]),
+          contains: [underscopeTitleMode]),
       Mode(
           className: "meta",
           begin: "#\\!?\\[",

@@ -20,13 +20,13 @@ final scala = Mode(refs: {
   "keyword":
       "type yield lazy override def with val var sealed abstract private trait object if forSome for while throw finally protected extends import final return else break new catch super class case package default try this match continue throws implicit"
 }, contains: [
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(className: "string", variants: [
-    Mode(begin: "\"", end: "\"", illegal: "\\n", contains: [BACKSLASH_ESCAPE]),
+    Mode(begin: "\"", end: "\"", illegal: "\\n", contains: [cBackslashEscape]),
     Mode(begin: "\"\"\"", end: "\"\"\"", relevance: 10),
     Mode(begin: "[a-z]+\"", end: "\"", illegal: "\\n", contains: [
-      BACKSLASH_ESCAPE,
+      cBackslashEscape,
       Mode(ref: '~contains~2~variants~2~contains~1')
     ]),
     Mode(
@@ -68,6 +68,6 @@ final scala = Mode(refs: {
             contains: [Mode(ref: '~contains~4')]),
         Mode(ref: '~contains~5~contains~0')
       ]),
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(className: "meta", begin: "@[A-Za-z]+")
 ]);

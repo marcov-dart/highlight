@@ -14,14 +14,14 @@ final llvm = Mode(
           begin: ";",
           end: "\\n",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(
           className: "string",
           variants: [Mode(begin: "\"", end: "[^\\\\]\"")],

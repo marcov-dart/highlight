@@ -12,12 +12,12 @@ final mathematica = Mode(
     contains: [
       Mode(className: "comment", begin: "\\(\\*", end: "\\*\\)", contains: [
         Mode(self: true),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      QUOTE_STRING_MODE,
-      C_NUMBER_MODE
+      quoteStringMode,
+      cNumberMode
     ]);

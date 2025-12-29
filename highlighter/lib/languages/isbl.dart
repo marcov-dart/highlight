@@ -16,7 +16,7 @@ final isbl = Mode(
             end: "\$",
             relevance: 0,
             contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(ref: '~contains~0~contains~5~variants~0~contains~1')
             ]),
         Mode(
@@ -25,7 +25,7 @@ final isbl = Mode(
             end: "\\*/",
             relevance: 0,
             contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(ref: '~contains~0~contains~5~variants~0~contains~1')
             ])
       ]),
@@ -72,7 +72,7 @@ final isbl = Mode(
           relevance: 0),
     },
     aliases: ["isbl"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[A-Za-zА-Яа-яёЁ_!][A-Za-zА-Яа-яёЁ_0-9]*",
     keywords: {
       "keyword":

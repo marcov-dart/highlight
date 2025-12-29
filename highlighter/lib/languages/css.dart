@@ -5,10 +5,10 @@ import '../src/common_modes.dart';
 
 final css = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "[=\\/|'\\\$]",
     contains: [
-      C_BLOCK_COMMENT_MODE,
+      cBlockCommentMode,
       Mode(className: "selector-id", begin: "#[A-Za-z0-9_-]+"),
       Mode(className: "selector-class", begin: "\\.[A-Za-z0-9_-]+"),
       Mode(
@@ -16,7 +16,7 @@ final css = Mode(
           begin: "\\[",
           end: "\\]",
           illegal: "\$",
-          contains: [APOS_STRING_MODE, QUOTE_STRING_MODE]),
+          contains: [aposStringMode, quoteStringMode]),
       Mode(
           className: "selector-pseudo",
           begin: ":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\"'.]+"),
@@ -34,9 +34,9 @@ final css = Mode(
             keywords: "and or not only",
             contains: [
               Mode(begin: "[a-z-]+:", className: "attribute"),
-              APOS_STRING_MODE,
-              QUOTE_STRING_MODE,
-              CSS_NUMBER_MODE
+              aposStringMode,
+              quoteStringMode,
+              cssNumberMode
             ])
       ]),
       Mode(
@@ -44,7 +44,7 @@ final css = Mode(
           begin: "[a-zA-Z-][a-zA-Z0-9_-]*",
           relevance: 0),
       Mode(begin: "{", end: "}", illegal: "\\S", contains: [
-        C_BLOCK_COMMENT_MODE,
+        cBlockCommentMode,
         Mode(
             begin: "(?:[A-Z\\_\\.\\-]+|--[a-zA-Z0-9_-]+)\\s*:",
             returnBegin: true,
@@ -61,15 +61,15 @@ final css = Mode(
                     Mode(begin: "[\\w-]+\\(", returnBegin: true, contains: [
                       Mode(className: "built_in", begin: "[\\w-]+"),
                       Mode(begin: "\\(", end: "\\)", contains: [
-                        APOS_STRING_MODE,
-                        QUOTE_STRING_MODE,
-                        CSS_NUMBER_MODE
+                        aposStringMode,
+                        quoteStringMode,
+                        cssNumberMode
                       ])
                     ]),
-                    CSS_NUMBER_MODE,
-                    QUOTE_STRING_MODE,
-                    APOS_STRING_MODE,
-                    C_BLOCK_COMMENT_MODE,
+                    cssNumberMode,
+                    quoteStringMode,
+                    aposStringMode,
+                    cBlockCommentMode,
                     Mode(className: "number", begin: "#[0-9A-Fa-f]+"),
                     Mode(className: "meta", begin: "!important")
                   ]))

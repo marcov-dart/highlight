@@ -25,7 +25,7 @@ final gams = Mode(
           className: "comment",
           variants: [Mode(begin: "'", end: "'"), Mode(begin: "\"", end: "\"")],
           illegal: "\\n",
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~7~contains~5': Mode(begin: "/", end: "/", keywords: {
         "keyword":
             "abort acronym acronyms alias all and assign binary card diag display else eq file files for free ge gt if integer le loop lt maximizing minimizing model models ne negative no not option options or ord positive prod put putpage puttl repeat sameas semicont semiint smax smin solve sos1 sos2 sum system table then until using while xor yes",
@@ -34,15 +34,15 @@ final gams = Mode(
             "abs arccos arcsin arctan arctan2 Beta betaReg binomial ceil centropy cos cosh cvPower div div0 eDist entropy errorf execSeed exp fact floor frac gamma gammaReg log logBeta logGamma log10 log2 mapVal max min mod ncpCM ncpF ncpVUpow ncpVUsin normal pi poly power randBinomial randLinear randTriangle round rPower sigmoid sign signPower sin sinh slexp sllog10 slrec sqexp sqlog10 sqr sqrec sqrt tan tanh trunc uniform uniformInt vcPower bool_and bool_eqv bool_imp bool_not bool_or bool_xor ifThen rel_eq rel_ge rel_gt rel_le rel_lt rel_ne gday gdow ghour gleap gmillisec gminute gmonth gsecond gyear jdate jnow jstart jtime errorLevel execError gamsRelease gamsVersion handleCollect handleDelete handleStatus handleSubmit heapFree heapLimit heapSize jobHandle jobKill jobStatus jobTerminate licenseLevel licenseStatus maxExecError sleep timeClose timeComp timeElapsed timeExec timeStart"
       }, contains: [
         Mode(ref: '~contains~7~contains~5~contains~0'),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        QUOTE_STRING_MODE,
-        APOS_STRING_MODE,
-        C_NUMBER_MODE
+        cLimeCommentMode,
+        cBlockCommentMode,
+        quoteStringMode,
+        aposStringMode,
+        cNumberMode
       ]),
     },
     aliases: ["gms"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "abort acronym acronyms alias all and assign binary card diag display else eq file files for free ge gt if integer le loop lt maximizing minimizing model models ne negative no not option options or ord positive prod put putpage puttl repeat sameas semicont semiint smax smin solve sos1 sos2 sum system table then until using while xor yes",
@@ -56,7 +56,7 @@ final gams = Mode(
           begin: "^\\\$ontext",
           end: "^\\\$offtext",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -69,32 +69,32 @@ final gams = Mode(
           returnBegin: true,
           contains: [Mode(className: "meta-keyword", begin: "^\\\$[a-z0-9]+")]),
       Mode(className: "comment", begin: "^\\*", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
-      QUOTE_STRING_MODE,
-      APOS_STRING_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
+      quoteStringMode,
+      aposStringMode,
       Mode(
           beginKeywords:
               "set sets parameter parameters variable variables scalar scalars equation equations",
           end: ";",
           contains: [
             Mode(className: "comment", begin: "^\\*", end: "\$", contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                   relevance: 0)
             ]),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE,
-            QUOTE_STRING_MODE,
-            APOS_STRING_MODE,
+            cLimeCommentMode,
+            cBlockCommentMode,
+            quoteStringMode,
+            aposStringMode,
             Mode(ref: '~contains~7~contains~5'),
             Mode(ref: '~contains~7~contains~6')
           ]),
@@ -104,17 +104,17 @@ final gams = Mode(
             end: "\$",
             contains: [Mode(ref: '~contains~7~contains~6')]),
         Mode(className: "comment", begin: "^\\*", end: "\$", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
               relevance: 0)
         ]),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        QUOTE_STRING_MODE,
-        APOS_STRING_MODE,
-        C_NUMBER_MODE
+        cLimeCommentMode,
+        cBlockCommentMode,
+        quoteStringMode,
+        aposStringMode,
+        cNumberMode
       ]),
       Mode(
           className: "function",
@@ -130,6 +130,6 @@ final gams = Mode(
                 excludeEnd: true),
             Mode(ref: '~contains~9~contains~2')
           ]),
-      C_NUMBER_MODE,
+      cNumberMode,
       Mode(ref: '~contains~9~contains~2')
     ]);

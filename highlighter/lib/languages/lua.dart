@@ -13,7 +13,7 @@ final lua = Mode(
           end: "\\]=*\\]",
           contains: [
             Mode(ref: '~contains~1~contains~0'),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -25,7 +25,7 @@ final lua = Mode(
           begin: "--(?!\\[=*\\[)",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -60,9 +60,9 @@ final lua = Mode(
             Mode(ref: '~contains~0'),
             Mode(ref: '~contains~1')
           ]),
-      C_NUMBER_MODE,
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      cNumberMode,
+      aposStringMode,
+      quoteStringMode,
       Mode(
           className: "string",
           begin: "\\[=*\\[",

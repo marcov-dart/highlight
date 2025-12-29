@@ -16,9 +16,9 @@ final nix = Mode(refs: {
       "built_in":
           "import abort baseNameOf dirOf isNull builtins map removeAttrs throw toString derivation"
     }, contains: [
-      NUMBER_MODE,
-      HASH_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      numberMode,
+      hashCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~3'),
       Mode(ref: '~contains~3~contains~0~contains~4')
     ])
@@ -34,9 +34,9 @@ final nix = Mode(refs: {
   "built_in":
       "import abort baseNameOf dirOf isNull builtins map removeAttrs throw toString derivation"
 }, contains: [
-  NUMBER_MODE,
-  HASH_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  numberMode,
+  hashCommentMode,
+  cBlockCommentMode,
   Mode(ref: '~contains~3'),
   Mode(ref: '~contains~3~contains~0~contains~4')
 ]);

@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 import '../src/mode.dart';
-import '../src/common_modes.dart';
 
 final fix = Mode(refs: {}, contains: [
   Mode(
@@ -24,4 +23,4 @@ final fix = Mode(refs: {}, contains: [
             excludeBegin: true,
             className: "string")
       ])
-], case_insensitive: true);
+], caseInsensitive: true);

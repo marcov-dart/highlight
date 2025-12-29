@@ -11,7 +11,7 @@ final abnf = Mode(
     contains: [
       Mode(className: "attribute", begin: "^[a-zA-Z][a-zA-Z0-9-]*(?=\\s*=)"),
       Mode(className: "comment", begin: ";", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -23,6 +23,6 @@ final abnf = Mode(
           className: "symbol",
           begin: "%x[0-9A-F]+(-[0-9A-F]+|(\\.[0-9A-F]+)+){0,1}"),
       Mode(className: "symbol", begin: "%[si]"),
-      QUOTE_STRING_MODE,
-      NUMBER_MODE
+      quoteStringMode,
+      numberMode
     ]);

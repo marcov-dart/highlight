@@ -9,12 +9,12 @@ final json = Mode(refs: {
       end: "\\]",
       contains: [
         Mode(end: ",", endsWithParent: true, excludeEnd: true, contains: [
-          QUOTE_STRING_MODE,
-          C_NUMBER_MODE,
+          quoteStringMode,
+          cNumberMode,
           Mode(ref: '~contains~2'),
           Mode(ref: '~contains~2~contains~1~contains~3'),
-          C_LINE_COMMENT_MODE,
-          C_BLOCK_COMMENT_MODE
+          cLimeCommentMode,
+          cBlockCommentMode
         ], keywords: {
           "literal": "true false null"
         })
@@ -28,33 +28,33 @@ final json = Mode(refs: {
             className: "attr",
             begin: "\"",
             end: "\"",
-            contains: [BACKSLASH_ESCAPE],
+            contains: [cBackslashEscape],
             illegal: "\\n"),
         Mode(
             end: ",",
             endsWithParent: true,
             excludeEnd: true,
             contains: [
-              QUOTE_STRING_MODE,
-              C_NUMBER_MODE,
+              quoteStringMode,
+              cNumberMode,
               Mode(ref: '~contains~2'),
               Mode(ref: '~contains~2~contains~1~contains~3'),
-              C_LINE_COMMENT_MODE,
-              C_BLOCK_COMMENT_MODE
+              cLimeCommentMode,
+              cBlockCommentMode
             ],
             keywords: {"literal": "true false null"},
             begin: ":"),
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE
+        cLimeCommentMode,
+        cBlockCommentMode
       ],
       illegal: "\\S"),
 }, contains: [
-  QUOTE_STRING_MODE,
-  C_NUMBER_MODE,
+  quoteStringMode,
+  cNumberMode,
   Mode(ref: '~contains~2'),
   Mode(ref: '~contains~2~contains~1~contains~3'),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE
+  cLimeCommentMode,
+  cBlockCommentMode
 ], keywords: {
   "literal": "true false null"
 }, illegal: "\\S");

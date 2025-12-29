@@ -16,14 +16,14 @@ final roboconf = Mode(
           ])),
     },
     aliases: ["graph", "instances"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: "import",
     contains: [
       Mode(
           begin: "^facet [a-zA-Z-_][^\\n{]+\\{",
           end: "}",
           keywords: "facet",
-          contains: [Mode(ref: '~contains~0~contains~0'), HASH_COMMENT_MODE]),
+          contains: [Mode(ref: '~contains~0~contains~0'), hashCommentMode]),
       Mode(
           begin: "^\\s*instance of [a-zA-Z-_][^\\n{]+\\{",
           end: "}",
@@ -33,11 +33,11 @@ final roboconf = Mode(
           contains: [
             Mode(self: true),
             Mode(ref: '~contains~0~contains~0'),
-            HASH_COMMENT_MODE
+            hashCommentMode
           ]),
       Mode(
           begin: "^[a-zA-Z-_][^\\n{]+\\{",
           end: "}",
-          contains: [Mode(ref: '~contains~0~contains~0'), HASH_COMMENT_MODE]),
-      HASH_COMMENT_MODE
+          contains: [Mode(ref: '~contains~0~contains~0'), hashCommentMode]),
+      hashCommentMode
     ]);

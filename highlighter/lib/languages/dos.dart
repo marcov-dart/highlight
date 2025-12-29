@@ -10,7 +10,7 @@ final dos = Mode(
           begin: "^\\s*@?rem\\b",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -19,7 +19,7 @@ final dos = Mode(
           relevance: 10),
     },
     aliases: ["bat", "cmd"],
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "\\/\\*",
     keywords: {
       "keyword":

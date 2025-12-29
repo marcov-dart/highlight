@@ -6,7 +6,7 @@ import '../src/common_modes.dart';
 final makefile = Mode(
     refs: {
       '~contains~1': Mode(className: "variable", variants: [
-        Mode(begin: "\\\$\\([a-zA-Z_]\\w*\\)", contains: [BACKSLASH_ESCAPE]),
+        Mode(begin: "\\\$\\([a-zA-Z_]\\w*\\)", contains: [cBackslashEscape]),
         Mode(begin: "\\\$[@%<?\\^\\+\\*]")
       ]),
     },
@@ -15,13 +15,13 @@ final makefile = Mode(
         "define endef undefine ifdef ifndef ifeq ifneq else endif include -include sinclude override export unexport private vpath",
     lexemes: "[\\w-]+",
     contains: [
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(ref: '~contains~1'),
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
-          contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~1')]),
+          contains: [cBackslashEscape, Mode(ref: '~contains~1')]),
       Mode(
           className: "variable",
           begin: "\\\$\\([\\w-]+\\s",

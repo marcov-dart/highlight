@@ -11,7 +11,7 @@ final openscad = Mode(refs: {
       begin: "\"",
       end: "\"",
       illegal: null,
-      contains: [BACKSLASH_ESCAPE]),
+      contains: [cBackslashEscape]),
   '~contains~2': Mode(
       className: "number", begin: "\\b\\d+(\\.\\d+)?(e-?\\d+)?", relevance: 0),
 }, aliases: [
@@ -22,8 +22,8 @@ final openscad = Mode(refs: {
   "built_in":
       "circle square polygon text sphere cube cylinder polyhedron translate rotate scale resize mirror multmatrix color offset hull minkowski union difference intersection abs sign sin cos tan acos asin atan atan2 floor round ceil ln log pow sqrt exp rands min max concat lookup str chr search version version_num norm cross parent_module echo import import_dxf dxf_linear_extrude linear_extrude rotate_extrude surface projection render children dxf_cross dxf_dim let assign"
 }, contains: [
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(ref: '~contains~2'),
   Mode(
       className: "meta",
@@ -45,6 +45,6 @@ final openscad = Mode(refs: {
           Mode(ref: '~contains~5'),
           Mode(className: "literal", begin: "false|true|PI|undef")
         ]),
-        UNDERSCORE_TITLE_MODE
+        underscopeTitleMode
       ])
 ]);

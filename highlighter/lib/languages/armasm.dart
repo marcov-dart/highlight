@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final armasm = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["arm"],
     lexemes: "\\.?[a-zA-Z]\\w*",
     keywords: {
@@ -25,15 +25,15 @@ final armasm = Mode(
           begin: "[;@]",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           relevance: 0),
-      C_BLOCK_COMMENT_MODE,
-      QUOTE_STRING_MODE,
+      cBlockCommentMode,
+      quoteStringMode,
       Mode(className: "string", begin: "'", end: "[^\\\\]'", relevance: 0),
       Mode(
           className: "title",

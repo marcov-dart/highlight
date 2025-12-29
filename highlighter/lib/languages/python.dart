@@ -23,26 +23,26 @@ final python = Mode(
           ]),
       '~contains~3~variants~2~contains~2': Mode(begin: "\\{\\{", relevance: 0),
       '~contains~3': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE
+        cBackslashEscape
       ], variants: [
         Mode(
             begin: "(u|b)?r?'''",
             end: "'''",
-            contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~0')],
+            contains: [cBackslashEscape, Mode(ref: '~contains~0')],
             relevance: 10),
         Mode(
             begin: "(u|b)?r?\"\"\"",
             end: "\"\"\"",
-            contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~0')],
+            contains: [cBackslashEscape, Mode(ref: '~contains~0')],
             relevance: 10),
         Mode(begin: "(fr|rf|f)'''", end: "'''", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~0'),
           Mode(ref: '~contains~3~variants~2~contains~2'),
           Mode(ref: '~contains~3~variants~2~contains~3')
         ]),
         Mode(begin: "(fr|rf|f)\"\"\"", end: "\"\"\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~0'),
           Mode(ref: '~contains~3~variants~2~contains~2'),
           Mode(ref: '~contains~3~variants~2~contains~3')
@@ -52,17 +52,17 @@ final python = Mode(
         Mode(begin: "(b|br)'", end: "'"),
         Mode(begin: "(b|br)\"", end: "\""),
         Mode(begin: "(fr|rf|f)'", end: "'", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~3~variants~2~contains~2'),
           Mode(ref: '~contains~3~variants~2~contains~3')
         ]),
         Mode(begin: "(fr|rf|f)\"", end: "\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~3~variants~2~contains~2'),
           Mode(ref: '~contains~3~variants~2~contains~3')
         ]),
-        APOS_STRING_MODE,
-        QUOTE_STRING_MODE
+        aposStringMode,
+        quoteStringMode
       ]),
       '~contains~1': Mode(className: "number", relevance: 0, variants: [
         Mode(begin: "\\b(0b[01]+)[lLjJ]?"),
@@ -86,7 +86,7 @@ final python = Mode(
       Mode(ref: '~contains~1'),
       Mode(beginKeywords: "if", relevance: 0),
       Mode(ref: '~contains~3'),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(
           variants: [
             Mode(className: "function", beginKeywords: "def"),
@@ -95,13 +95,13 @@ final python = Mode(
           end: ":",
           illegal: "[\${=;\\n,]",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)", contains: [
               Mode(self: true),
               Mode(ref: '~contains~0'),
               Mode(ref: '~contains~1'),
               Mode(ref: '~contains~3'),
-              HASH_COMMENT_MODE
+              hashCommentMode
             ]),
             Mode(begin: "->", endsWithParent: true, keywords: "None")
           ]),

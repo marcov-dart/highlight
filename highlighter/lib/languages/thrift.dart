@@ -9,10 +9,10 @@ final thrift = Mode(refs: {}, keywords: {
   "built_in": "bool byte i16 i32 i64 double string binary",
   "literal": "true false"
 }, contains: [
-  QUOTE_STRING_MODE,
-  NUMBER_MODE,
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  quoteStringMode,
+  numberMode,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(
       className: "class",
       beginKeywords: "struct enum service exception",

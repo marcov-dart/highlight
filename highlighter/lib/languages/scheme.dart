@@ -7,7 +7,7 @@ final scheme = Mode(
     refs: {
       '~contains~5~contains~2~contains~8':
           Mode(className: "comment", begin: "#\\|", end: "\\|#", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -18,7 +18,7 @@ final scheme = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -53,7 +53,7 @@ final scheme = Mode(
         Mode(endsWithParent: true, relevance: 0, contains: [
           Mode(ref: '~contains~4~contains~0~contains~1'),
           Mode(ref: '~contains~1'),
-          QUOTE_STRING_MODE,
+          quoteStringMode,
           Mode(ref: '~contains~4~contains~0~contains~4'),
           Mode(ref: '~contains~3'),
           Mode(ref: '~contains~4'),
@@ -74,7 +74,7 @@ final scheme = Mode(
         Mode(begin: "\\(", end: "\\)", contains: [
           Mode(self: true),
           Mode(ref: '~contains~4~contains~0~contains~1'),
-          QUOTE_STRING_MODE,
+          quoteStringMode,
           Mode(ref: '~contains~1'),
           Mode(ref: '~contains~4~contains~0~contains~4'),
           Mode(ref: '~contains~3')
@@ -96,7 +96,7 @@ final scheme = Mode(
     contains: [
       Mode(className: "meta", begin: "^#!", end: "\$"),
       Mode(ref: '~contains~1'),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(ref: '~contains~3'),
       Mode(ref: '~contains~4'),
       Mode(ref: '~contains~5'),

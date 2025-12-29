@@ -5,7 +5,7 @@ import '../src/common_modes.dart';
 
 final autoit = Mode(
     refs: {
-      '~contains~3': Mode(variants: [BINARY_NUMBER_MODE, C_NUMBER_MODE]),
+      '~contains~3': Mode(variants: [binaryNumverMode, cNumberMode]),
       '~contains~2': Mode(className: "string", variants: [
         Mode(
             begin: "\"",
@@ -20,7 +20,7 @@ final autoit = Mode(
             begin: ";",
             end: "\$",
             contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -28,7 +28,7 @@ final autoit = Mode(
             ],
             relevance: 0),
         Mode(className: "comment", begin: "#cs", end: "#ce", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -39,7 +39,7 @@ final autoit = Mode(
             begin: "#comments-start",
             end: "#comments-end",
             contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -47,7 +47,7 @@ final autoit = Mode(
             ])
       ]),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "\\/\\*",
     keywords: {
       "keyword":
@@ -94,7 +94,7 @@ final autoit = Mode(
           end: "\$",
           illegal: "\\\$|\\[|%",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)", contains: [
               Mode(ref: '~contains~1'),
               Mode(ref: '~contains~2'),

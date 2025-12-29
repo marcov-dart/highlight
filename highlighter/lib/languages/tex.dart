@@ -42,7 +42,7 @@ final tex = Mode(refs: {
       begin: "%",
       end: "\$",
       contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

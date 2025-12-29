@@ -23,14 +23,14 @@ final ada = Mode(
           ]),
       '~contains~0':
           Mode(className: "comment", begin: "--", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "abort else new return abs elsif not reverse abstract end accept entry select access exception of separate aliased exit or some all others subtype and for out synchronized array function overriding at tagged generic package task begin goto pragma terminate body private then if procedure type case in protected constant interface is raise use declare range delay limited record when delta loop rem while digits renames with do mod requeue xor",

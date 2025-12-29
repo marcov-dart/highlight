@@ -16,13 +16,13 @@ final lasso = Mode(
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~3~starts~contains~6': Mode(
           className: "string",
           begin: "'",
           end: "'",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       '~contains~3~starts~contains~5': Mode(
           className: "number",
           begin:
@@ -66,7 +66,7 @@ final lasso = Mode(
           begin: "<!--",
           end: "-->",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -75,7 +75,7 @@ final lasso = Mode(
           relevance: 0),
     },
     aliases: ["ls", "lassoscript"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[a-zA-Z_][\\w.]*|&[lg]t;",
     keywords: {
       "literal":
@@ -124,8 +124,8 @@ final lasso = Mode(
                         ])),
                 Mode(ref: '~contains~1'),
                 Mode(ref: '~contains~2'),
-                C_LINE_COMMENT_MODE,
-                C_BLOCK_COMMENT_MODE,
+                cLimeCommentMode,
+                cBlockCommentMode,
                 Mode(ref: '~contains~3~starts~contains~5'),
                 Mode(ref: '~contains~3~starts~contains~6'),
                 Mode(ref: '~contains~3~starts~contains~7'),
@@ -138,8 +138,8 @@ final lasso = Mode(
               ])),
       Mode(className: "meta", begin: "\\[", relevance: 0),
       Mode(className: "meta", begin: "^#!", end: "lasso9\$", relevance: 10),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(ref: '~contains~3~starts~contains~5'),
       Mode(ref: '~contains~3~starts~contains~6'),
       Mode(ref: '~contains~3~starts~contains~7'),

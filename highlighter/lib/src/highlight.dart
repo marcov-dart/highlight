@@ -15,15 +15,15 @@ class Highlight {
   }
 
   List<Mode> _expandMode(Mode mode) {
-    if (mode.variants != null && mode.cached_variants == null) {
-      mode.cached_variants = mode.variants!.map((variant) {
+    if (mode.variants != null && mode.cachedVariants == null) {
+      mode.cachedVariants = mode.variants!.map((variant) {
         if (variant!.ref != null) {
           variant = _languageMode!.refs![variant.ref!];
         }
         return Mode.inherit(mode, variant)..variants = null;
       }).toList();
     }
-    return mode.cached_variants ??
+    return mode.cachedVariants ??
         (mode.endsWithParent == true ? [Mode.inherit(mode)] : [mode]);
   }
 
@@ -31,7 +31,7 @@ class Highlight {
     return RegExp(
       value,
       multiLine: true,
-      caseSensitive: _languageMode!.case_insensitive != true,
+      caseSensitive: _languageMode!.caseInsensitive != true,
     );
   }
 
@@ -77,7 +77,7 @@ class Highlight {
       var compiledKeywords = {}.cast<String, dynamic>();
 
       void _flatten(String className, String? str) {
-        if (_languageMode!.case_insensitive == true) {
+        if (_languageMode!.caseInsensitive == true) {
           str = str!.toLowerCase();
         }
         str!.split(' ').forEach((kw) {
@@ -113,11 +113,11 @@ class Highlight {
       if (mode.endSameAsBegin == true) mode.end = mode.begin;
       if (mode.end == null && mode.endsWithParent != true) mode.end = r'\B|\b';
       if (mode.end != null) mode.endRe = _langRe(mode.end!);
-      mode.terminator_end = mode.end ?? '';
-      if (mode.endsWithParent == true && parent.terminator_end != null) {
-        mode.terminator_end = mode.terminator_end! +
+      mode.terminatorEnd = mode.end ?? '';
+      if (mode.endsWithParent == true && parent.terminatorEnd != null) {
+        mode.terminatorEnd = mode.terminatorEnd! +
             (mode.end != null ? '|' : '') +
-            parent.terminator_end!;
+            parent.terminatorEnd!;
       }
     }
     if (mode.illegal != null) mode.illegalRe = _langRe(mode.illegal!);
@@ -160,7 +160,7 @@ class Highlight {
           ? '\\.?(?:' + c.begin! + ')\\.?'
           : c.begin;
     }).toList()
-          ..addAll([mode.terminator_end, mode.illegal]))
+          ..addAll([mode.terminatorEnd, mode.illegal]))
         .where((x) => x != null && x.isNotEmpty)
         .toList();
 
@@ -276,9 +276,8 @@ class Highlight {
 
     // FIXME: Move inside highlight to use lang reference
     dynamic _keywordMatch(Mode mode, RegExpMatch match) {
-      final matchStr = langMode.case_insensitive == true
-          ? match[0]!.toLowerCase()
-          : match[0];
+      final matchStr =
+          langMode.caseInsensitive == true ? match[0]!.toLowerCase() : match[0];
       return mode.keywords[matchStr];
     }
 

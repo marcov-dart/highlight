@@ -10,7 +10,7 @@ final erlangRepl = Mode(refs: {}, keywords: {
 }, contains: [
   Mode(className: "meta", begin: "^[0-9]+> ", relevance: 10),
   Mode(className: "comment", begin: "%", end: "\$", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -20,8 +20,8 @@ final erlangRepl = Mode(refs: {}, keywords: {
       className: "number",
       begin: "\\b(\\d+#[a-fA-F0-9]+|\\d+(\\.\\d+)?([eE][-+]?\\d+)?)",
       relevance: 0),
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
+  aposStringMode,
+  quoteStringMode,
   Mode(begin: "\\?(::)?([A-Z]\\w*(::)?)+"),
   Mode(begin: "->"),
   Mode(begin: "ok"),

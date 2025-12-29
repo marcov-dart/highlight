@@ -32,7 +32,7 @@ final livescript = Mode(
           Mode(className: "regexp", variants: [
         Mode(begin: "//", end: "//[gim]*", contains: [
           Mode(ref: '~contains~2~variants~2~contains~1'),
-          HASH_COMMENT_MODE
+          hashCommentMode
         ]),
         Mode(begin: "\\/(?![ *])(\\\\\\/|.)*?\\/[gim]*(?=\\W)")
       ]),
@@ -43,7 +43,7 @@ final livescript = Mode(
         "literal": "true false null undefined yes no on off it that void",
         "built_in": "npm require console print module global window document"
       }, contains: [
-        BINARY_NUMBER_MODE,
+        binaryNumverMode,
         Mode(ref: '~contains~1'),
         Mode(ref: '~contains~2'),
         Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),
@@ -51,15 +51,15 @@ final livescript = Mode(
         Mode(ref: '~contains~2~variants~2~contains~1~contains~5')
       ]),
       '~contains~2': Mode(className: "string", variants: [
-        Mode(begin: "'''", end: "'''", contains: [BACKSLASH_ESCAPE]),
-        Mode(begin: "'", end: "'", contains: [BACKSLASH_ESCAPE]),
+        Mode(begin: "'''", end: "'''", contains: [cBackslashEscape]),
+        Mode(begin: "'", end: "'", contains: [cBackslashEscape]),
         Mode(begin: "\"\"\"", end: "\"\"\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~2~variants~2~contains~1'),
           Mode(ref: '~contains~2~variants~2~contains~2')
         ]),
         Mode(begin: "\"", end: "\"", contains: [
-          BACKSLASH_ESCAPE,
+          cBackslashEscape,
           Mode(ref: '~contains~2~variants~2~contains~1'),
           Mode(ref: '~contains~2~variants~2~contains~2')
         ]),
@@ -81,20 +81,20 @@ final livescript = Mode(
     },
     illegal: "\\/\\*",
     contains: [
-      BINARY_NUMBER_MODE,
+      binaryNumverMode,
       Mode(ref: '~contains~1'),
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~4'),
       Mode(ref: '~contains~2~variants~2~contains~1~contains~5'),
       Mode(className: "comment", begin: "\\/\\*", end: "\\*\\/", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(begin: "(#=>|=>|\\|>>|-?->|\\!->)"),
       Mode(
           className: "function",
@@ -114,7 +114,7 @@ final livescript = Mode(
                         "npm require console print module global window document"
                   }, contains: [
                     Mode(self: true),
-                    BINARY_NUMBER_MODE,
+                    binaryNumverMode,
                     Mode(ref: '~contains~1'),
                     Mode(ref: '~contains~2'),
                     Mode(ref: '~contains~2~variants~2~contains~1~contains~3'),

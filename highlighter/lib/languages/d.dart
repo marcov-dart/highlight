@@ -14,15 +14,15 @@ final d = Mode(
       "literal": "false null true"
     },
     contains: [
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(
           className: "comment",
           begin: "\\/\\+",
           end: "\\+\\/",
           contains: [
             Mode(self: true),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

@@ -20,7 +20,7 @@ final maxima = Mode(
           begin: "/\\*",
           end: "\\*/",
           contains: [Mode(self: true)]),
-      QUOTE_STRING_MODE,
+      quoteStringMode,
       Mode(className: "number", relevance: 0, variants: [
         Mode(begin: "\\b(\\d+|\\d+\\.|\\.\\d+|\\d+\\.\\d+)[Ee][-+]?\\d+\\b"),
         Mode(

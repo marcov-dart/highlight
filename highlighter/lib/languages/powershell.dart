@@ -60,7 +60,7 @@ final powershell = Mode(
             Mode(ref: '~contains~0'),
             Mode(ref: '~contains~0~contains~0~contains~2'),
             Mode(ref: '~contains~0~contains~0~contains~3'),
-            NUMBER_MODE,
+            numberMode,
             Mode(ref: '~contains~0~contains~0~contains~5'),
             Mode(ref: '~contains~0~contains~0~contains~6'),
             Mode(ref: '~contains~0~contains~0~contains~7'),
@@ -97,7 +97,7 @@ final powershell = Mode(
     },
     aliases: ["ps", "ps1"],
     lexemes: "-?[A-z\\.\\-]+",
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "keyword":
           "if else foreach return do while until elseif begin for trap data dynamicparam end break throw param continue finally in switch exit filter try process catch hidden static parameter"
@@ -106,7 +106,7 @@ final powershell = Mode(
       Mode(ref: '~contains~0'),
       Mode(ref: '~contains~0~contains~0~contains~2'),
       Mode(ref: '~contains~0~contains~0~contains~3'),
-      NUMBER_MODE,
+      numberMode,
       Mode(ref: '~contains~0~contains~0~contains~5'),
       Mode(ref: '~contains~0~contains~0~contains~6'),
       Mode(ref: '~contains~0~contains~0~contains~7'),
@@ -119,7 +119,7 @@ final powershell = Mode(
           end: "\\s*[{]",
           excludeEnd: true,
           relevance: 0,
-          contains: [TITLE_MODE]),
+          contains: [titleMode]),
       Mode(
           className: "function",
           begin: "function\\s+",

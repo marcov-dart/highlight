@@ -12,7 +12,7 @@ final awk = Mode(refs: {}, keywords: {
     Mode(begin: "\\\$\\{(.*?)}")
   ]),
   Mode(className: "string", contains: [
-    BACKSLASH_ESCAPE
+    cBackslashEscape
   ], variants: [
     Mode(begin: "(u|b)?r?'''", end: "'''", relevance: 10),
     Mode(begin: "(u|b)?r?\"\"\"", end: "\"\"\"", relevance: 10),
@@ -20,10 +20,10 @@ final awk = Mode(refs: {}, keywords: {
     Mode(begin: "(u|r|ur)\"", end: "\"", relevance: 10),
     Mode(begin: "(b|br)'", end: "'"),
     Mode(begin: "(b|br)\"", end: "\""),
-    APOS_STRING_MODE,
-    QUOTE_STRING_MODE
+    aposStringMode,
+    quoteStringMode
   ]),
-  REGEXP_MODE,
-  HASH_COMMENT_MODE,
-  NUMBER_MODE
+  regExpMode,
+  hashCommentMode,
+  numberMode
 ]);

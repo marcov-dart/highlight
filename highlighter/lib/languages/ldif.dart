@@ -18,5 +18,5 @@ final ldif = Mode(refs: {}, contains: [
       excludeEnd: true,
       starts: Mode(end: "\$", relevance: 0)),
   Mode(className: "literal", begin: "^-", end: "\$"),
-  HASH_COMMENT_MODE
+  hashCommentMode
 ]);

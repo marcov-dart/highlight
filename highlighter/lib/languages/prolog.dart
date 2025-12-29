@@ -5,12 +5,12 @@ import '../src/common_modes.dart';
 
 final prolog = Mode(refs: {
   '~contains~2~contains~4~contains~9': Mode(
-      className: "string", begin: "`", end: "`", contains: [BACKSLASH_ESCAPE]),
+      className: "string", begin: "`", end: "`", contains: [cBackslashEscape]),
   '~contains~2~contains~4~contains~5': Mode(
       className: "comment",
       begin: "%",
       end: "\$",
-      contains: [PHRASAL_WORDS_MODE]),
+      contains: [phrasakWordsMode]),
   '~contains~2~contains~4~contains~11':
       Mode(className: "string", begin: "0\\'\\\\s"),
   '~contains~2~contains~4~contains~10':
@@ -22,13 +22,13 @@ final prolog = Mode(refs: {
     Mode(ref: '~contains~2~contains~3'),
     Mode(ref: '~contains~2~contains~4'),
     Mode(ref: '~contains~2~contains~4~contains~5'),
-    C_BLOCK_COMMENT_MODE,
-    QUOTE_STRING_MODE,
-    APOS_STRING_MODE,
+    cBlockCommentMode,
+    quoteStringMode,
+    aposStringMode,
     Mode(ref: '~contains~2~contains~4~contains~9'),
     Mode(ref: '~contains~2~contains~4~contains~10'),
     Mode(ref: '~contains~2~contains~4~contains~11'),
-    C_NUMBER_MODE
+    cNumberMode
   ]),
   '~contains~2~contains~3': Mode(begin: ":-"),
   '~contains~2': Mode(begin: "\\(", end: "\\)", relevance: 0, contains: [
@@ -38,13 +38,13 @@ final prolog = Mode(refs: {
     Mode(ref: '~contains~2~contains~3'),
     Mode(ref: '~contains~2~contains~4'),
     Mode(ref: '~contains~2~contains~4~contains~5'),
-    C_BLOCK_COMMENT_MODE,
-    QUOTE_STRING_MODE,
-    APOS_STRING_MODE,
+    cBlockCommentMode,
+    quoteStringMode,
+    aposStringMode,
     Mode(ref: '~contains~2~contains~4~contains~9'),
     Mode(ref: '~contains~2~contains~4~contains~10'),
     Mode(ref: '~contains~2~contains~4~contains~11'),
-    C_NUMBER_MODE
+    cNumberMode
   ]),
   '~contains~1': Mode(
       className: "symbol",
@@ -61,12 +61,12 @@ final prolog = Mode(refs: {
   Mode(ref: '~contains~2~contains~3'),
   Mode(ref: '~contains~2~contains~4'),
   Mode(ref: '~contains~2~contains~4~contains~5'),
-  C_BLOCK_COMMENT_MODE,
-  QUOTE_STRING_MODE,
-  APOS_STRING_MODE,
+  cBlockCommentMode,
+  quoteStringMode,
+  aposStringMode,
   Mode(ref: '~contains~2~contains~4~contains~9'),
   Mode(ref: '~contains~2~contains~4~contains~10'),
   Mode(ref: '~contains~2~contains~4~contains~11'),
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(begin: "\\.\$")
 ]);

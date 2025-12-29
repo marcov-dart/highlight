@@ -23,7 +23,7 @@ final livecodeserver = Mode(
           ],
           relevance: 0),
     },
-    case_insensitive: false,
+    caseInsensitive: false,
     keywords: {
       "keyword":
           "\$_COOKIE \$_FILES \$_GET \$_GET_BINARY \$_GET_RAW \$_POST \$_POST_BINARY \$_POST_RAW \$_SESSION \$_SERVER codepoint codepoints segment segments codeunit codeunits sentence sentences trueWord trueWords paragraph after byte bytes english the until http forever descending using line real8 with seventh for stdout finally element word words fourth before black ninth sixth characters chars stderr uInt1 uInt1s uInt2 uInt2s stdin string lines relative rel any fifth items from middle mid at else of catch then third it file milliseconds seconds second secs sec int1 int1s int4 int4s internet int2 int2s normal text item last long detailed effective uInt4 uInt4s repeat end repeat URL in try into switch to words https token binfile each tenth as ticks tick system real4 by dateItems without char character ascending eighth whole dateTime numeric short first ftp integer abbreviated abbr abbrev private case while if div mod wrap and or bitAnd bitNot bitOr bitXor among not in a an within contains ends with begins the keys of keys",
@@ -42,10 +42,10 @@ final livecodeserver = Mode(
           contains: [
             Mode(ref: '~contains~0'),
             Mode(ref: '~contains~2~contains~1'),
-            APOS_STRING_MODE,
-            QUOTE_STRING_MODE,
-            BINARY_NUMBER_MODE,
-            C_NUMBER_MODE,
+            aposStringMode,
+            quoteStringMode,
+            binaryNumverMode,
+            cNumberMode,
             Mode(ref: '~contains~2~contains~6')
           ]),
       Mode(
@@ -61,10 +61,10 @@ final livecodeserver = Mode(
       Mode(beginKeywords: "command on", end: "\$", contains: [
         Mode(ref: '~contains~0'),
         Mode(ref: '~contains~2~contains~1'),
-        APOS_STRING_MODE,
-        QUOTE_STRING_MODE,
-        BINARY_NUMBER_MODE,
-        C_NUMBER_MODE,
+        aposStringMode,
+        quoteStringMode,
+        binaryNumverMode,
+        cNumberMode,
         Mode(ref: '~contains~2~contains~6')
       ]),
       Mode(className: "meta", variants: [
@@ -72,22 +72,22 @@ final livecodeserver = Mode(
         Mode(begin: "<\\?"),
         Mode(begin: "\\?>")
       ]),
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
-      BINARY_NUMBER_MODE,
-      C_NUMBER_MODE,
+      aposStringMode,
+      quoteStringMode,
+      binaryNumverMode,
+      cNumberMode,
       Mode(ref: '~contains~2~contains~6'),
-      C_BLOCK_COMMENT_MODE,
-      HASH_COMMENT_MODE,
+      cBlockCommentMode,
+      hashCommentMode,
       Mode(className: "comment", begin: "--", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
       Mode(className: "comment", begin: "[^:]//", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

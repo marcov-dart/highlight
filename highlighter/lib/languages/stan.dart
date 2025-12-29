@@ -16,13 +16,13 @@ final stan = Mode(
     },
     lexemes: "[a-zA-Z]\\w*",
     contains: [
-      C_LINE_COMMENT_MODE,
+      cLimeCommentMode,
       Mode(
           className: "comment",
           begin: "#",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -36,7 +36,7 @@ final stan = Mode(
           end: "\\*\\/",
           contains: [
             Mode(className: "doctag", begin: "@(return|param)"),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

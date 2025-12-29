@@ -7,14 +7,14 @@ final sql = Mode(
     refs: {
       '~contains~0~contains~5':
           Mode(className: "comment", begin: "--", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
             relevance: 0)
       ]),
     },
-    case_insensitive: true,
+    caseInsensitive: true,
     illegal: "[<>{}*]",
     contains: [
       Mode(
@@ -42,12 +42,12 @@ final sql = Mode(
                 end: "\"",
                 contains: [Mode(begin: "\"\"")]),
             Mode(className: "string", begin: "`", end: "`"),
-            C_NUMBER_MODE,
-            C_BLOCK_COMMENT_MODE,
+            cNumberMode,
+            cBlockCommentMode,
             Mode(ref: '~contains~0~contains~5'),
-            HASH_COMMENT_MODE
+            hashCommentMode
           ]),
-      C_BLOCK_COMMENT_MODE,
+      cBlockCommentMode,
       Mode(ref: '~contains~0~contains~5'),
-      HASH_COMMENT_MODE
+      hashCommentMode
     ]);

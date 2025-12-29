@@ -14,7 +14,7 @@ final purebasic = Mode(
           begin: ";",
           end: "\$",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -33,7 +33,7 @@ final purebasic = Mode(
                 begin: "(Procedure|Declare)(C|CDLL|DLL)?",
                 excludeEnd: true),
             Mode(className: "type", begin: "\\.\\w*"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(className: "string", begin: "(\\x7e)?\"", end: "\"", illegal: "\\n"),
       Mode(className: "symbol", begin: "#[a-zA-Z_]\\w*\\\$?")

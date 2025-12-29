@@ -15,7 +15,7 @@ final arcade = Mode(refs: {
       ],
       relevance: 0),
   '~contains~2': Mode(className: "string", begin: "`", end: "`", contains: [
-    BACKSLASH_ESCAPE,
+    cBackslashEscape,
     Mode(className: "subst", begin: "\\\$\\{", end: "\\}", keywords: {
       "keyword": "if for while var new function do return void else break",
       "literal":
@@ -23,11 +23,11 @@ final arcade = Mode(refs: {
       "built_in":
           "Abs Acos Angle Attachments Area AreaGeodetic Asin Atan Atan2 Average Bearing Boolean Buffer BufferGeodetic Ceil Centroid Clip Console Constrain Contains Cos Count Crosses Cut Date DateAdd DateDiff Day Decode DefaultValue Dictionary Difference Disjoint Distance DistanceGeodetic Distinct DomainCode DomainName Equals Exp Extent Feature FeatureSet FeatureSetByAssociation FeatureSetById FeatureSetByPortalItem FeatureSetByRelationshipName FeatureSetByTitle FeatureSetByUrl Filter First Floor Geometry GroupBy Guid HasKey Hour IIf IndexOf Intersection Intersects IsEmpty IsNan IsSelfIntersecting Length LengthGeodetic Log Max Mean Millisecond Min Minute Month MultiPartToSinglePart Multipoint NextSequenceValue Now Number OrderBy Overlaps Point Polygon Polyline Portal Pow Random Relate Reverse RingIsClockWise Round Second SetGeometry Sin Sort Sqrt Stdev Sum SymmetricDifference Tan Text Timestamp Today ToLocal Top Touches ToUTC TrackCurrentTime TrackGeometryWindow TrackIndex TrackStartTime TrackWindow TypeOf Union UrlEncode Variance Weekday When Within Year "
     }, contains: [
-      APOS_STRING_MODE,
-      QUOTE_STRING_MODE,
+      aposStringMode,
+      quoteStringMode,
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~2~contains~1~contains~3'),
-      REGEXP_MODE
+      regExpMode
     ])
   ]),
 }, aliases: [
@@ -39,11 +39,11 @@ final arcade = Mode(refs: {
   "built_in":
       "Abs Acos Angle Attachments Area AreaGeodetic Asin Atan Atan2 Average Bearing Boolean Buffer BufferGeodetic Ceil Centroid Clip Console Constrain Contains Cos Count Crosses Cut Date DateAdd DateDiff Day Decode DefaultValue Dictionary Difference Disjoint Distance DistanceGeodetic Distinct DomainCode DomainName Equals Exp Extent Feature FeatureSet FeatureSetByAssociation FeatureSetById FeatureSetByPortalItem FeatureSetByRelationshipName FeatureSetByTitle FeatureSetByUrl Filter First Floor Geometry GroupBy Guid HasKey Hour IIf IndexOf Intersection Intersects IsEmpty IsNan IsSelfIntersecting Length LengthGeodetic Log Max Mean Millisecond Min Minute Month MultiPartToSinglePart Multipoint NextSequenceValue Now Number OrderBy Overlaps Point Polygon Polyline Portal Pow Random Relate Reverse RingIsClockWise Round Second SetGeometry Sin Sort Sqrt Stdev Sum SymmetricDifference Tan Text Timestamp Today ToLocal Top Touches ToUTC TrackCurrentTime TrackGeometryWindow TrackIndex TrackStartTime TrackWindow TypeOf Union UrlEncode Variance Weekday When Within Year "
 }, contains: [
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
+  aposStringMode,
+  quoteStringMode,
   Mode(ref: '~contains~2'),
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
   Mode(
       className: "symbol",
       begin:
@@ -63,9 +63,9 @@ final arcade = Mode(refs: {
           "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(return)\\b)\\s*",
       keywords: "return",
       contains: [
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        REGEXP_MODE,
+        cLimeCommentMode,
+        cBlockCommentMode,
+        regExpMode,
         Mode(
             className: "function",
             begin: "(\\(.*?\\)|[A-Za-z_][0-9A-Za-z_]*)\\s*=>",
@@ -89,13 +89,13 @@ final arcade = Mode(refs: {
                           "Abs Acos Angle Attachments Area AreaGeodetic Asin Atan Atan2 Average Bearing Boolean Buffer BufferGeodetic Ceil Centroid Clip Console Constrain Contains Cos Count Crosses Cut Date DateAdd DateDiff Day Decode DefaultValue Dictionary Difference Disjoint Distance DistanceGeodetic Distinct DomainCode DomainName Equals Exp Extent Feature FeatureSet FeatureSetByAssociation FeatureSetById FeatureSetByPortalItem FeatureSetByRelationshipName FeatureSetByTitle FeatureSetByUrl Filter First Floor Geometry GroupBy Guid HasKey Hour IIf IndexOf Intersection Intersects IsEmpty IsNan IsSelfIntersecting Length LengthGeodetic Log Max Mean Millisecond Min Minute Month MultiPartToSinglePart Multipoint NextSequenceValue Now Number OrderBy Overlaps Point Polygon Polyline Portal Pow Random Relate Reverse RingIsClockWise Round Second SetGeometry Sin Sort Sqrt Stdev Sum SymmetricDifference Tan Text Timestamp Today ToLocal Top Touches ToUTC TrackCurrentTime TrackGeometryWindow TrackIndex TrackStartTime TrackWindow TypeOf Union UrlEncode Variance Weekday When Within Year "
                     },
                     contains: [
-                      APOS_STRING_MODE,
-                      QUOTE_STRING_MODE,
+                      aposStringMode,
+                      quoteStringMode,
                       Mode(ref: '~contains~2'),
                       Mode(ref: '~contains~2~contains~1~contains~3'),
-                      REGEXP_MODE,
-                      C_BLOCK_COMMENT_MODE,
-                      C_LINE_COMMENT_MODE
+                      regExpMode,
+                      cBlockCommentMode,
+                      cLimeCommentMode
                     ])
               ])
             ])
@@ -115,13 +115,13 @@ final arcade = Mode(refs: {
             excludeBegin: true,
             excludeEnd: true,
             contains: [
-              APOS_STRING_MODE,
-              QUOTE_STRING_MODE,
+              aposStringMode,
+              quoteStringMode,
               Mode(ref: '~contains~2'),
               Mode(ref: '~contains~2~contains~1~contains~3'),
-              REGEXP_MODE,
-              C_BLOCK_COMMENT_MODE,
-              C_LINE_COMMENT_MODE
+              regExpMode,
+              cBlockCommentMode,
+              cLimeCommentMode
             ])
       ],
       illegal: "\\[|%"),

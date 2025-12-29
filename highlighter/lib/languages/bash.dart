@@ -29,15 +29,15 @@ final bash = Mode(
             Mode(className: "title", begin: "\\w[\\w\\d_]*", relevance: 0)
           ],
           relevance: 0),
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(className: "string", begin: "\"", end: "\"", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~3~contains~1'),
         Mode(
             className: "variable",
             begin: "\\\$\\(",
             end: "\\)",
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
       Mode(className: "", begin: "\\\\\""),
       Mode(className: "string", begin: "'", end: "'"),

@@ -6,9 +6,9 @@ import '../src/common_modes.dart';
 final zephir = Mode(
     refs: {
       '~contains~6~contains~1~contains~3':
-          Mode(variants: [BINARY_NUMBER_MODE, C_NUMBER_MODE]),
+          Mode(variants: [binaryNumverMode, cNumberMode]),
       '~contains~6~contains~1~contains~2': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE
+        cBackslashEscape
       ], variants: [
         Mode(begin: "b\"", end: "\""),
         Mode(begin: "b'", end: "'"),
@@ -17,25 +17,25 @@ final zephir = Mode(
             begin: "'",
             end: "'",
             illegal: null,
-            contains: [BACKSLASH_ESCAPE]),
+            contains: [cBackslashEscape]),
         Mode(
             className: "string",
             begin: "\"",
             end: "\"",
             illegal: null,
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
     },
     aliases: ["zep"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords:
         "and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var let while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception default die require __FUNCTION__ enddeclare final try switch continue endfor endif declare unset true false trait goto instanceof insteadof __DIR__ __NAMESPACE__ yield finally int uint long ulong char uchar double float bool boolean stringlikely unlikely",
     contains: [
-      C_LINE_COMMENT_MODE,
-      HASH_COMMENT_MODE,
+      cLimeCommentMode,
+      hashCommentMode,
       Mode(className: "comment", begin: "/\\*", end: "\\*/", contains: [
         Mode(className: "doctag", begin: "@[A-Za-z]+"),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -46,7 +46,7 @@ final zephir = Mode(
           begin: "__halt_compiler.+?;",
           end: "false",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -59,7 +59,7 @@ final zephir = Mode(
           className: "string",
           begin: "<<<['\"]?\\w+['\"]?\$",
           end: "^\\w+;",
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       Mode(begin: "(::|->)+[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"),
       Mode(
           className: "function",
@@ -68,10 +68,10 @@ final zephir = Mode(
           excludeEnd: true,
           illegal: "\\\$|\\[|%",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)", contains: [
               Mode(self: true),
-              C_BLOCK_COMMENT_MODE,
+              cBlockCommentMode,
               Mode(ref: '~contains~6~contains~1~contains~2'),
               Mode(ref: '~contains~6~contains~1~contains~3')
             ])
@@ -84,14 +84,14 @@ final zephir = Mode(
           illegal: "[:\\(\\\$\"]",
           contains: [
             Mode(beginKeywords: "extends implements"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(
           beginKeywords: "namespace",
           end: ";",
           illegal: "[\\.']",
-          contains: [UNDERSCORE_TITLE_MODE]),
-      Mode(beginKeywords: "use", end: ";", contains: [UNDERSCORE_TITLE_MODE]),
+          contains: [underscopeTitleMode]),
+      Mode(beginKeywords: "use", end: ";", contains: [underscopeTitleMode]),
       Mode(begin: "=>"),
       Mode(ref: '~contains~6~contains~1~contains~2'),
       Mode(ref: '~contains~6~contains~1~contains~3')

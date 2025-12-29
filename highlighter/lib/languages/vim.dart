@@ -14,11 +14,11 @@ final vim = Mode(
     },
     illegal: ";",
     contains: [
-      NUMBER_MODE,
+      numberMode,
       Mode(className: "string", begin: "'", end: "'", illegal: "\\n"),
       Mode(className: "string", begin: "\"(\\\\\"|\\n\\\\|[^\"\\n])*\""),
       Mode(className: "comment", begin: "\"", end: "\$", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -31,7 +31,7 @@ final vim = Mode(
           end: "\$",
           relevance: 0,
           contains: [
-            TITLE_MODE,
+            titleMode,
             Mode(className: "params", begin: "\\(", end: "\\)")
           ]),
       Mode(className: "symbol", begin: "<[\\w-]+>")

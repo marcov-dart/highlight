@@ -6,17 +6,17 @@ import '../src/common_modes.dart';
 final gcode = Mode(
     refs: {},
     aliases: ["nc"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[A-Z_][A-Z0-9_.]*",
     keywords:
         "IF DO WHILE ENDWHILE CALL ENDIF SUB ENDSUB GOTO REPEAT ENDREPEAT EQ LT GT NE GE LE OR XOR",
     contains: [
       Mode(className: "meta", begin: "\\%"),
       Mode(className: "meta", begin: "([O])([0-9]+)"),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(className: "comment", begin: "\\(", end: "\\)", contains: [
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -32,13 +32,13 @@ final gcode = Mode(
           begin: "'",
           end: "'",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       Mode(
           className: "string",
           begin: "\"",
           end: "\"",
           illegal: null,
-          contains: [BACKSLASH_ESCAPE]),
+          contains: [cBackslashEscape]),
       Mode(className: "name", begin: "([G])([0-9]+\\.?[0-9]?)"),
       Mode(className: "name", begin: "([M])([0-9]+\\.?[0-9]?)"),
       Mode(className: "attr", begin: "(VC|VS|#)", end: "(\\d+)"),

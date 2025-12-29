@@ -13,10 +13,10 @@ final clean = Mode(refs: {}, aliases: [
   "built_in": "Int Real Char Bool",
   "literal": "True False"
 }, contains: [
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
-  APOS_STRING_MODE,
-  QUOTE_STRING_MODE,
-  C_NUMBER_MODE,
+  cLimeCommentMode,
+  cBlockCommentMode,
+  aposStringMode,
+  quoteStringMode,
+  cNumberMode,
   Mode(begin: "->|<-[|:]?|#!?|>>=|\\{\\||\\|\\}|:==|=:|<>")
 ]);

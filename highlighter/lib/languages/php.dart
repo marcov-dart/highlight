@@ -6,9 +6,9 @@ import '../src/common_modes.dart';
 final php = Mode(
     refs: {
       '~contains~9~contains~1~contains~4':
-          Mode(variants: [BINARY_NUMBER_MODE, C_NUMBER_MODE]),
+          Mode(variants: [binaryNumverMode, cNumberMode]),
       '~contains~9~contains~1~contains~3': Mode(className: "string", contains: [
-        BACKSLASH_ESCAPE,
+        cBackslashEscape,
         Mode(ref: '~contains~1~contains~0')
       ], variants: [
         Mode(begin: "b\"", end: "\""),
@@ -18,27 +18,27 @@ final php = Mode(
             begin: "'",
             end: "'",
             illegal: null,
-            contains: [BACKSLASH_ESCAPE]),
+            contains: [cBackslashEscape]),
         Mode(
             className: "string",
             begin: "\"",
             end: "\"",
             illegal: null,
-            contains: [BACKSLASH_ESCAPE])
+            contains: [cBackslashEscape])
       ]),
       '~contains~7': Mode(begin: "\\\$+[a-zA-Z_-ÿ][a-zA-Z0-9_-ÿ]*"),
       '~contains~1~contains~0':
           Mode(className: "meta", begin: "<\\?(php)?|\\?>"),
     },
     aliases: ["php", "php3", "php4", "php5", "php6", "php7"],
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords:
         "and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception default die require __FUNCTION__ enddeclare final try switch continue endfor endif declare unset true false trait goto instanceof insteadof __DIR__ __NAMESPACE__ yield finally",
     contains: [
-      HASH_COMMENT_MODE,
+      hashCommentMode,
       Mode(className: "comment", begin: "//", end: "\$", contains: [
         Mode(ref: '~contains~1~contains~0'),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -46,7 +46,7 @@ final php = Mode(
       ]),
       Mode(className: "comment", begin: "/\\*", end: "\\*/", contains: [
         Mode(className: "doctag", begin: "@[A-Za-z]+"),
-        PHRASAL_WORDS_MODE,
+        phrasakWordsMode,
         Mode(
             className: "doctag",
             begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -57,7 +57,7 @@ final php = Mode(
           begin: "__halt_compiler.+?;",
           end: "false",
           contains: [
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -71,7 +71,7 @@ final php = Mode(
           begin: "<<<['\"]?\\w+['\"]?\$",
           end: "^\\w+;?\$",
           contains: [
-            BACKSLASH_ESCAPE,
+            cBackslashEscape,
             Mode(className: "subst", variants: [
               Mode(begin: "\\\$\\w+"),
               Mode(begin: "\\{\\\$", end: "\\}")
@@ -88,11 +88,11 @@ final php = Mode(
           excludeEnd: true,
           illegal: "\\\$|\\[|%",
           contains: [
-            UNDERSCORE_TITLE_MODE,
+            underscopeTitleMode,
             Mode(className: "params", begin: "\\(", end: "\\)", contains: [
               Mode(self: true),
               Mode(ref: '~contains~7'),
-              C_BLOCK_COMMENT_MODE,
+              cBlockCommentMode,
               Mode(ref: '~contains~9~contains~1~contains~3'),
               Mode(ref: '~contains~9~contains~1~contains~4')
             ])
@@ -105,14 +105,14 @@ final php = Mode(
           illegal: "[:\\(\\\$\"]",
           contains: [
             Mode(beginKeywords: "extends implements"),
-            UNDERSCORE_TITLE_MODE
+            underscopeTitleMode
           ]),
       Mode(
           beginKeywords: "namespace",
           end: ";",
           illegal: "[\\.']",
-          contains: [UNDERSCORE_TITLE_MODE]),
-      Mode(beginKeywords: "use", end: ";", contains: [UNDERSCORE_TITLE_MODE]),
+          contains: [underscopeTitleMode]),
+      Mode(beginKeywords: "use", end: ";", contains: [underscopeTitleMode]),
       Mode(begin: "=>"),
       Mode(ref: '~contains~9~contains~1~contains~3'),
       Mode(ref: '~contains~9~contains~1~contains~4')

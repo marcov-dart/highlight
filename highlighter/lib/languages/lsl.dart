@@ -16,14 +16,14 @@ final lsl = Mode(
           className: "comment",
           variants: [
             Mode(className: "comment", begin: "//", end: "\$", contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                   relevance: 0)
             ]),
             Mode(className: "comment", begin: "/\\*", end: "\\*/", contains: [
-              PHRASAL_WORDS_MODE,
+              phrasakWordsMode,
               Mode(
                   className: "doctag",
                   begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",

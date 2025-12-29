@@ -12,14 +12,14 @@ final haxe = Mode(refs: {}, aliases: [
   "literal": "true false null _"
 }, contains: [
   Mode(className: "string", begin: "'", end: "'", contains: [
-    BACKSLASH_ESCAPE,
+    cBackslashEscape,
     Mode(className: "subst", begin: "\\\$\\{", end: "\\}"),
     Mode(className: "subst", begin: "\\\$", end: "\\W}")
   ]),
-  QUOTE_STRING_MODE,
-  C_LINE_COMMENT_MODE,
-  C_BLOCK_COMMENT_MODE,
-  C_NUMBER_MODE,
+  quoteStringMode,
+  cLimeCommentMode,
+  cBlockCommentMode,
+  cNumberMode,
   Mode(className: "meta", begin: "@:", end: "\$"),
   Mode(
       className: "meta",
@@ -49,7 +49,7 @@ final haxe = Mode(refs: {}, aliases: [
       className: "class",
       beginKeywords: "enum",
       end: "\\{",
-      contains: [TITLE_MODE]),
+      contains: [titleMode]),
   Mode(
       className: "class",
       beginKeywords: "abstract",
@@ -73,7 +73,7 @@ final haxe = Mode(refs: {}, aliases: [
             end: "\\W",
             excludeBegin: true,
             excludeEnd: true),
-        TITLE_MODE
+        titleMode
       ],
       keywords: {
         "keyword": "abstract from to"
@@ -92,7 +92,7 @@ final haxe = Mode(refs: {}, aliases: [
             contains: [
               Mode(className: "type", begin: "[a-zA-Z]\\w*", relevance: 0)
             ]),
-        TITLE_MODE
+        titleMode
       ]),
   Mode(
       className: "function",
@@ -100,5 +100,5 @@ final haxe = Mode(refs: {}, aliases: [
       end: "\\(",
       excludeEnd: true,
       illegal: "\\S",
-      contains: [TITLE_MODE])
+      contains: [titleMode])
 ], illegal: "<\\/");

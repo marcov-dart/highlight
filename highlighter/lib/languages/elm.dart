@@ -9,7 +9,7 @@ final elm = Mode(
           Mode(className: "type", begin: "\\b[A-Z][\\w']*", relevance: 0),
       '~contains~0~contains~0~contains~1': Mode(variants: [
         Mode(className: "comment", begin: "--", end: "\$", contains: [
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -17,7 +17,7 @@ final elm = Mode(
         ]),
         Mode(className: "comment", begin: "{-", end: "-}", contains: [
           Mode(self: true),
-          PHRASAL_WORDS_MODE,
+          phrasakWordsMode,
           Mode(
               className: "doctag",
               begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -63,7 +63,7 @@ final elm = Mode(
         Mode(ref: '~contains~0~contains~0~contains~1')
       ]),
       Mode(beginKeywords: "infix infixl infixr", end: "\$", contains: [
-        C_NUMBER_MODE,
+        cNumberMode,
         Mode(ref: '~contains~0~contains~0~contains~1')
       ]),
       Mode(
@@ -72,8 +72,8 @@ final elm = Mode(
           keywords: "port",
           contains: [Mode(ref: '~contains~0~contains~0~contains~1')]),
       Mode(className: "string", begin: "'\\\\?.", end: "'", illegal: "."),
-      QUOTE_STRING_MODE,
-      C_NUMBER_MODE,
+      quoteStringMode,
+      cNumberMode,
       Mode(ref: '~contains~2~contains~0'),
       Mode(className: "title", begin: "^[_a-z][\\w']*", relevance: 0),
       Mode(ref: '~contains~0~contains~0~contains~1'),

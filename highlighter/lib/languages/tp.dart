@@ -29,7 +29,7 @@ final tp = Mode(refs: {
       contains: [
         Mode(self: true),
         Mode(ref: '~contains~0~contains~1'),
-        QUOTE_STRING_MODE,
+        quoteStringMode,
         Mode(ref: '~contains~0~contains~2')
       ]),
   Mode(className: "keyword", begin: "/(PROG|ATTR|MN|POS|END)\\b"),
@@ -42,28 +42,28 @@ final tp = Mode(refs: {
       begin: "\\d+(sec|msec|mm/sec|cm/min|inch/min|deg/sec|mm|in|cm)?\\b",
       relevance: 0),
   Mode(className: "comment", begin: "//", end: "[;\$]", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
         relevance: 0)
   ]),
   Mode(className: "comment", begin: "!", end: "[;\$]", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
         relevance: 0)
   ]),
   Mode(className: "comment", begin: "--eg:", end: "\$", contains: [
-    PHRASAL_WORDS_MODE,
+    phrasakWordsMode,
     Mode(
         className: "doctag",
         begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
         relevance: 0)
   ]),
-  QUOTE_STRING_MODE,
+  quoteStringMode,
   Mode(className: "string", begin: "'", end: "'"),
-  C_NUMBER_MODE,
+  cNumberMode,
   Mode(className: "variable", begin: "\\\$[A-Za-z0-9_]+")
 ]);

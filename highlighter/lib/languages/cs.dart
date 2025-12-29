@@ -61,8 +61,8 @@ final cs = Mode(
                           '~contains~4~variants~0~contains~3~contains~1~contains~3~contains~2~contains~0')
                 ],
                 illegal: "\\n"),
-            APOS_STRING_MODE,
-            QUOTE_STRING_MODE,
+            aposStringMode,
+            quoteStringMode,
             Mode(
                 ref:
                     '~contains~4~variants~0~contains~3~contains~1~contains~3~contains~5'),
@@ -71,7 +71,7 @@ final cs = Mode(
                 begin: "/\\*",
                 end: "\\*/",
                 contains: [
-                  PHRASAL_WORDS_MODE,
+                  phrasakWordsMode,
                   Mode(
                       className: "doctag",
                       begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
@@ -87,7 +87,7 @@ final cs = Mode(
           contains: [
             Mode(begin: "{{"),
             Mode(begin: "}}"),
-            BACKSLASH_ESCAPE,
+            cBackslashEscape,
             Mode(ref: '~contains~4~variants~0~contains~3~contains~1~contains~3')
           ]),
       '~contains~4~variants~0':
@@ -103,20 +103,20 @@ final cs = Mode(
           Mode(ref: '~contains~4~variants~0'),
           Mode(ref: '~contains~4~variants~0~contains~3~contains~1'),
           Mode(ref: '~contains~4~variants~0~contains~3~contains~2'),
-          APOS_STRING_MODE,
-          QUOTE_STRING_MODE,
+          aposStringMode,
+          quoteStringMode,
           Mode(
               ref:
                   '~contains~4~variants~0~contains~3~contains~1~contains~3~contains~5'),
-          C_BLOCK_COMMENT_MODE
+          cBlockCommentMode
         ])
       ]),
       '~contains~4': Mode(variants: [
         Mode(ref: '~contains~4~variants~0'),
         Mode(ref: '~contains~4~variants~0~contains~3~contains~1'),
         Mode(ref: '~contains~4~variants~0~contains~3~contains~2'),
-        APOS_STRING_MODE,
-        QUOTE_STRING_MODE
+        aposStringMode,
+        quoteStringMode
       ]),
     },
     aliases: ["csharp", "c#"],
@@ -137,15 +137,15 @@ final cs = Mode(
               Mode(begin: "<!--|-->"),
               Mode(begin: "</?", end: ">")
             ]),
-            PHRASAL_WORDS_MODE,
+            phrasakWordsMode,
             Mode(
                 className: "doctag",
                 begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
                 relevance: 0)
           ],
           returnBegin: true),
-      C_LINE_COMMENT_MODE,
-      C_BLOCK_COMMENT_MODE,
+      cLimeCommentMode,
+      cBlockCommentMode,
       Mode(className: "meta", begin: "#", end: "\$", keywords: {
         "meta-keyword":
             "if else elif endif define undef warning error line region endregion pragma checksum"
@@ -158,15 +158,15 @@ final cs = Mode(
           beginKeywords: "class interface",
           end: "[{;=]",
           illegal: "[^\\s:,]",
-          contains: [TITLE_MODE, C_LINE_COMMENT_MODE, C_BLOCK_COMMENT_MODE]),
+          contains: [titleMode, cLimeCommentMode, cBlockCommentMode]),
       Mode(
           beginKeywords: "namespace",
           end: "[{;=]",
           illegal: "[^\\s:]",
           contains: [
             Mode(className: "title", begin: "[a-zA-Z](\\.?\\w)*", relevance: 0),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ]),
       Mode(
           className: "meta",
@@ -192,7 +192,7 @@ final cs = Mode(
             Mode(
                 begin: "[a-zA-Z]\\w*\\s*\\(",
                 returnBegin: true,
-                contains: [TITLE_MODE],
+                contains: [titleMode],
                 relevance: 0),
             Mode(
                 className: "params",
@@ -211,9 +211,9 @@ final cs = Mode(
                   Mode(
                       ref:
                           '~contains~4~variants~0~contains~3~contains~1~contains~3~contains~5'),
-                  C_BLOCK_COMMENT_MODE
+                  cBlockCommentMode
                 ]),
-            C_LINE_COMMENT_MODE,
-            C_BLOCK_COMMENT_MODE
+            cLimeCommentMode,
+            cBlockCommentMode
           ])
     ]);

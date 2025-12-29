@@ -4,14 +4,16 @@ import 'package:flutter_highlighter/theme_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'example_map.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
-final title = 'Flutter Highlight Gallery';
+const title = 'Flutter Highlight Gallery';
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
       home: MyHomePage(),
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -30,10 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildMenuContent(String text) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(children: <Widget>[
-        Text(text, style: TextStyle(fontSize: 16)),
-        Icon(Icons.arrow_drop_down)
+        Text(text, style: const TextStyle(fontSize: 16)),
+        const Icon(Icons.arrow_drop_down)
       ]),
     );
   }
@@ -42,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text(title),
         actions: <Widget>[
           PopupMenuButton(
             child: _buildMenuContent(language),
@@ -75,18 +79,16 @@ class _MyHomePageState extends State<MyHomePage> {
               }).toList();
             },
             onSelected: (selected) {
-              if (selected != null) {
-                setState(() {
-                  theme = selected;
-                });
-              }
+              setState(() {
+                theme = selected;
+              });
             },
           ),
           IconButton(
             icon: const Icon(Icons.code),
             tooltip: 'Source Code',
             onPressed: () {
-              launch('https://github.com/pd4d10/highlight');
+              launchUrl(Uri.parse('https://github.com/pd4d10/highlight'));
             },
           )
         ],
@@ -99,8 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
               exampleMap[language]!,
               language: language,
               theme: themeMap[theme]!,
-              padding: EdgeInsets.all(12),
-              textStyle: TextStyle(
+              padding: const EdgeInsets.all(12),
+              textStyle: const TextStyle(
                   fontFamily:
                       'SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace'),
             )
